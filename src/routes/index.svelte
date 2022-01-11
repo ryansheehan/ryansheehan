@@ -1,2 +1,16 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<main>
+  <h1>Coming Soon...</h1>
+</main>
+
+<style lang="postcss">
+  main {
+    display: grid;
+    place-items: center;
+    padding: 8px;
+    flex: 1 1 auto;
+  }
+
+  h1 {
+    text-align: center;
+  }
+</style>
