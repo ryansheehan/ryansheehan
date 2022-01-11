@@ -20,7 +20,7 @@ jobs:
         if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
         # https://github.com/marketplace/actions/deploy-to-github-pages
         # https://github.com/JamesIves/github-pages-deploy-action
-        uses: JamesIves/github-pages-deploy-action@4.2.2
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
           branch: main
           folder: build
