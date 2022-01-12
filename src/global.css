@@ -11,27 +11,40 @@
   --color-white: #ffffff;
   --color-black: #000000;
 
-  --color-primary-50:  hsl(0, 0%, 96.86%);
-  --color-primary-100: hsl(0, 0%, 94.90%);
-  --color-primary-200: hsl(0, 0%, 92.55%);
-  --color-primary-300: hsl(0, 0%, 89.80%);
-  --color-primary-400: hsl(0, 0%, 87.45%);
-  --color-primary-500: hsl(0, 0%, 81.18%);
-  --color-primary-600: hsl(0, 0%, 74.51%);
-  --color-primary-700: hsl(0, 0%, 69.80%);
-  --color-primary-800: hsl(0, 0%, 52.55%);
-  --color-primary-900: hsl(0, 0%, 23.92%);
+  /* https://grayscale.design/app */
+  /* https://paletton.com */
+  --color-grayscale-50: hsl(0, 0%, 96.90%);
+  --color-grayscale-100: hsl(0, 0%, 93.70%);
+  --color-grayscale-200: hsl(0, 0%, 87.50%);
+  --color-grayscale-300: hsl(0, 0%, 79.20%);
+  --color-grayscale-400: hsl(0, 0%, 65.90%);
+  --color-grayscale-500: hsl(0, 0%, 52.90%);
+  --color-grayscale-600: hsl(0, 0%, 42.70%);
+  --color-grayscale-700: hsl(0, 0%, 37.30%);
+  --color-grayscale-800: hsl(0, 0%, 29.00%);
+  --color-grayscale-900: hsl(0, 0%, 23.90%);
 
-  --color-accent-50:  hsl(0, 0%, 96.86%);
-  --color-accent-100: hsl(0, 0%, 94.90%);
-  --color-accent-200: hsl(0, 0%, 92.55%);
-  --color-accent-300: hsl(0, 0%, 89.80%);
-  --color-accent-400: hsl(0, 0%, 87.45%);
-  --color-accent-500: hsl(0, 0%, 81.18%);
-  --color-accent-600: hsl(0, 0%, 74.51%);
-  --color-accent-700: hsl(0, 0%, 69.80%);
-  --color-accent-800: hsl(0, 0%, 52.55%);
-  --color-accent-900: hsl(0, 0%, 23.92%);
+  --color-secondary-50: hsl(40, 2.60%, 96.83%);
+  --color-secondary-100: hsl(40, 2.60%, 93.63%);
+  --color-secondary-200: hsl(40, 2.60%, 87.38%);
+  --color-secondary-300: hsl(40, 2.60%, 78.64%);
+  --color-secondary-400: hsl(40, 2.60%, 65.63%);
+  --color-secondary-500: hsl(40, 2.60%, 52.53%);
+  --color-secondary-600: hsl(40, 2.60%, 41.99%);
+  --color-secondary-700: hsl(40, 2.60%, 36.97%);
+  --color-secondary-800: hsl(40, 2.60%, 28.74%);
+  --color-secondary-900: hsl(40, 2.60%, 23.71%);
+
+  --color-primary-50: hsl(210, 2.60%, 96.87%);
+  --color-primary-100: hsl(210, 2.60%, 93.67%);
+  --color-primary-200: hsl(210, 2.60%, 87.44%);
+  --color-primary-300: hsl(210, 2.60%, 79.15%);
+  --color-primary-400: hsl(210, 2.60%, 65.90%);
+  --color-primary-500: hsl(210, 2.60%, 53.34%);
+  --color-primary-600: hsl(210, 2.60%, 42.74%);
+  --color-primary-700: hsl(210, 2.60%, 37.31%);
+  --color-primary-800: hsl(210, 2.60%, 29.41%);
+  --color-primary-900: hsl(210, 2.60%, 23.98%);
 
   --shadow-color: 0deg 0% 67%;
   --shadow-elevation-low:
