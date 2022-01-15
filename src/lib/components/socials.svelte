@@ -2,9 +2,12 @@
   import Email from '$lib/icons/email.svelte';  
   import LinkedIn from '$lib/icons/linkedin.svelte';
   import Github from '$lib/icons/github.svelte';
+
+  let className: string | undefined = undefined;
+  export {className as class};
 </script>
 
-<div>
+<div class={className}>
   <a class="color-blue glow--hover" href="mailto:rsheehan@gmail.com"><Email/></a>
   <a class="color-blue glow--hover" href="https://www.linkedin.com/in/sheehanr/"><LinkedIn/></a>
   <a class="color-blue glow--hover" href="https://github.com/ryansheehan/"><Github/></a>

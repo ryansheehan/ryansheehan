@@ -4,8 +4,8 @@
 
 <div class="header-content">
   <img src="https://www.gravatar.com/avatar/559b2e9fe5620de0994a0de5180cd6eb" alt="Ryan Sheehan" />
-  <a class="color-blue--hover glow--hover" href="/"><h1>Ryan Sheehan</h1></a>
-  <Socials/>
+  <a class="color-blue--hover glow--hover" href="/"><h1 class="text-3xl">Ryan Sheehan</h1></a>  
+  <Socials class="socials"/>
 </div>
 <hr/>
 
@@ -13,14 +13,16 @@
   .header-content {    
     display: flex;
     flex-flow: row wrap;
-    align-items: center;          
+    align-items: center;   
+    
+    & :global(.socials) {
+      padding-top: 6px;
+    }
   }
 
   h1 {
     padding-left: 16px;
-    white-space: nowrap;
-    font-size: var(--font-size-x3l);
-    line-height: var(--line-height-x3l);
+    white-space: nowrap;    
   } 
 
   img {

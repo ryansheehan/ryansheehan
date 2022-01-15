@@ -107,17 +107,17 @@
   --font-size-xl:  calc(var(--font-size-base) * 1.250);
   --line-height-xl: 1.75rem;
 
-  --font-size-x2l: calc(var(--font-size-base) * 1.500);
-  --line-height-x2l: 2rem;
+  --font-size-2xl: calc(var(--font-size-base) * 1.500);
+  --line-height-2xl: 2rem;
 
-  --font-size-x3l: calc(var(--font-size-base) * 1.875);
-  --line-height-x3l: 2.25rem;
+  --font-size-3xl: calc(var(--font-size-base) * 1.875);
+  --line-height-3xl: 2.25rem;
 
-  --font-size-x4l: calc(var(--font-size-base) * 2.250);
-  --line-height-x4l: 2.5rem;
+  --font-size-4xl: calc(var(--font-size-base) * 2.250);
+  --line-height-4xl: 2.5rem;
 
-  --font-size-x5l: calc(var(--font-size-base) * 3.000); 
-  --line-height-x5l: 1;
+  --font-size-5xl: calc(var(--font-size-base) * 3.000); 
+  --line-height-5xl: 1;
 }
 
 /*
@@ -212,32 +212,52 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--font-weight-bold);
 }
 
-h1 {
-  font-size: var(--font-size-x5l);
-  line-height: var(--line-height-x5l);
+.text-xs {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
 }
 
-h2 {
-  font-size: var(--font-size-x4l);
-  line-height: var(--line-height-x4l);
+.text-sm {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-sm);
 }
 
-h3 {
-  font-size: var(--font-size-x3l);
-  line-height: var(--line-height-x3l);
+.text-md {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-md);
 }
 
-h4 {
-  font-size: var(--font-size-x2l);
-  line-height: var(--line-height-x2l);
+.text-lg {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-lg);
 }
 
-h5 {
+.text-xl {
   font-size: var(--font-size-xl);
   line-height: var(--line-height-xl);
 }
 
-a, a:hover, a:active {
+.text-2xl {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+}
+
+.text-3xl {
+  font-size: var(--font-size-3xl);
+  line-height: var(--line-height-3xl);
+}
+
+.text-4xl {
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-4xl);
+}
+
+.text-5xl {
+  font-size: var(--font-size-5xl);
+  line-height: var(--line-height-5xl);
+}
+
+a {
   color: inherit;
   text-decoration: none;
   border-color: inherit;
