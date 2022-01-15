@@ -82,22 +82,26 @@
   <div slot="options" class="skill-filter-container">
     <label 
       class="skill-filter glow" 
-      class:color-purple={filterLanguage} 
+      class:color-purple={filterLanguage}   
+      class:selected={filterLanguage}   
       for="filter-language">Languages</label>
     <input class="visually-hidden" type="checkbox" id="filter-language" bind:checked={filterLanguage}>
     <label 
       class="skill-filter"
       class:color-green={filterFramework}
+      class:selected={filterFramework}
       for="filter-framework">Frameworks</label>
     <input class="visually-hidden" type="checkbox" id="filter-framework" bind:checked={filterFramework}>
     <label 
       class="skill-filter"
       class:color-red={filterOther}
+      class:selected={filterOther}
       for="filter-other">Other</label>
     <input class="visually-hidden" type="checkbox" id="filter-other" bind:checked={filterOther}>
     <label 
       class="skill-filter"
       class:color-yellow={filterTool}
+      class:selected={filterTool}
       for="filter-tool">Tools</label>
     <input class="visually-hidden" type="checkbox" id="filter-tool" bind:checked={filterTool}>
   </div>
@@ -117,18 +121,25 @@
 </div>
 
 <style lang="postcss">
+  .selected {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
   .skill-filter {
     font-size: var(--font-size-xs);
-    line-height: var(--line-height-xs);
-    text-decoration: none;
+    line-height: var(--line-height-xs);    
+    opacity: 0.8;
+    transition: 0.3s;
     
     @media (--tablet-and-larger) {
       font-size: var(--font-size-md);
       line-height: var(--line-height-md);         
     }
 
-    @media (--laptop-and-larger) {
+    @media (--laptop-and-larger) {      
       &:hover {
+        opacity: 1;
         text-decoration: underline;
       }
     }

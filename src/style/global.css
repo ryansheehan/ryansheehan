@@ -53,7 +53,10 @@
   --color-deg-blue: 200deg;
   --color-deg-purple: 272deg;
   --color-deg-red: 344deg;
-  --color-deg-test: 66deg;
+  --color-deg-test: 66deg;   
+  --color-sl: 70% 72.67%;  
+  --glow-l-a: 0.4;
+  --glow: drop-shadow(0 0 4px hsl(var(--color-hsl) / var(--glow-l-a)));
 
   /*
   primary
@@ -83,11 +86,6 @@
   --hsl-gray-700: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-700);
   --hsl-gray-800: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-800);
   --hsl-gray-900: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-900);
-
-  --glow-hsl-l: 72.67%;
-  --glow-hsl-s: 70%; 
-  --glow-hsl-a: 0.4;
-  
 
   --font-size-base: 1rem;
   --line-height-base: 1.5rem;
@@ -272,4 +270,60 @@ a {
   color: inherit;
   text-decoration: none;
   border-color: inherit;
+}
+
+.color-blue, .color-blue--hover {
+  --color-deg: var(--color-deg-blue);
+}
+
+.color-orange, .color-orange--hover {
+  --color-deg: var(--color-deg-orange);
+}
+
+.color-green, .color-green--hover {
+  --color-deg: var(--color-deg-green);
+}
+
+.color-purple, .color-purple--hover {
+  --color-deg: var(--color-deg-purple);
+}
+
+.color-red, .color-red--hover {
+  --color-deg: var(--color-deg-red);
+}
+
+.color-yellow, .color-yellow--hover {
+  --color-deg: var(--color-deg-yellow);
+}
+
+.color-test, .color-test--hover {
+  --glow-hsl-deg: var(--color-deg-test);
+}
+
+.color-blue, .color-blue--hover:hover, .color-blue--hover:active,
+.color-orange, .color-orange--hover:hover, .color-orange--hover:active,
+.color-green, .color-green--hover:hover, .color-green--hover:active,
+.color-purple, .color-purple--hover:hover, .color-purple--hover:active,
+.color-red, .color-red--hover:hover, .color-red--hover:active,
+.color-yellow, .color-yellow--hover:hover, .color-yellow--hover:active,
+.color-test, .color-test--hover:hover, .color-test--hover:active {
+  color: hsl(var(--color-deg) var(--color-sl));  
+  border-color: hsl(var(--color-deg) var(--color-sl));
+}
+
+.glow-bright {
+  --glow-l-a: 0.7;
+}
+
+.glow-dim {
+  --glow-l-a: 0.15;
+}
+
+.glow, .glow--hover:hover, .glow--hover:active {
+  filter: --var(--glow);
+}
+
+.glow--hover {  
+  transition-property: color, filter;
+  transition-duration: 0.5s; 
 }
