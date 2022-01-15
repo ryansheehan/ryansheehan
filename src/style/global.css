@@ -3,48 +3,21 @@
   --half-element-spacing: calc(var(--element-spacing) / 2);
   --page-padding: 16px;
 
-  --font-family-header: serif;
-  --font-family-content: sans-serif;
+  --font-family-header: 'Playfair Display', serif;
+  --font-family-content: 'Signika Negative', sans-serif;
   --font-weight-base: 400;
   --font-weight-bold: 700;
 
-  --color-white: #ffffff;
-  --color-black: #000000;
+  --color-white: #fff;
+  --color-black: #000;
 
-  /* https://grayscale.design/app */
-  /* https://paletton.com */
-  --color-grayscale-50: hsl(0, 0%, 96.90%);
-  --color-grayscale-100: hsl(0, 0%, 93.70%);
-  --color-grayscale-200: hsl(0, 0%, 87.50%);
-  --color-grayscale-300: hsl(0, 0%, 79.20%);
-  --color-grayscale-400: hsl(0, 0%, 65.90%);
-  --color-grayscale-500: hsl(0, 0%, 52.90%);
-  --color-grayscale-600: hsl(0, 0%, 42.70%);
-  --color-grayscale-700: hsl(0, 0%, 37.30%);
-  --color-grayscale-800: hsl(0, 0%, 29.00%);
-  --color-grayscale-900: hsl(0, 0%, 23.90%);
-
-  --color-secondary-50: hsl(40, 2.60%, 96.83%);
-  --color-secondary-100: hsl(40, 2.60%, 93.63%);
-  --color-secondary-200: hsl(40, 2.60%, 87.38%);
-  --color-secondary-300: hsl(40, 2.60%, 78.64%);
-  --color-secondary-400: hsl(40, 2.60%, 65.63%);
-  --color-secondary-500: hsl(40, 2.60%, 52.53%);
-  --color-secondary-600: hsl(40, 2.60%, 41.99%);
-  --color-secondary-700: hsl(40, 2.60%, 36.97%);
-  --color-secondary-800: hsl(40, 2.60%, 28.74%);
-  --color-secondary-900: hsl(40, 2.60%, 23.71%);
-
-  --color-primary-50: hsl(210, 2.60%, 96.87%);
-  --color-primary-100: hsl(210, 2.60%, 93.67%);
-  --color-primary-200: hsl(210, 2.60%, 87.44%);
-  --color-primary-300: hsl(210, 2.60%, 79.15%);
-  --color-primary-400: hsl(210, 2.60%, 65.90%);
-  --color-primary-500: hsl(210, 2.60%, 53.34%);
-  --color-primary-600: hsl(210, 2.60%, 42.74%);
-  --color-primary-700: hsl(210, 2.60%, 37.31%);
-  --color-primary-800: hsl(210, 2.60%, 29.41%);
-  --color-primary-900: hsl(210, 2.60%, 23.98%);
+  --text-light-high: hsl(0 0% 100% / 0.87);  
+  --text-light-medium: hsl(0 0% 100% / 0.60);
+  --text-light-disabled: hsl(0 0% 100% / 0.38);
+  --text-dark-disabled: hsl(0 0% 0% / 0.38);
+  --text-dark-high: hsl(0 0% 0% / 0.87);
+  --text-dark-medium: hsl(0 0% 0% / 0.60);
+  --text-dark-disabled: hsl(0 0% 0% / 0.38);
 
   --shadow-color: 0deg 0% 67%;
   --shadow-elevation-low:
@@ -59,6 +32,62 @@
     9.5px 6.7px 14.8px -0.5px hsl(var(--shadow-color) / 0.47),
     24.3px 17.2px 38px -1px hsl(var(--shadow-color) / 0.59),
     57.9px 40.9px 90.4px -1.5px hsl(var(--shadow-color) / 0.7);
+
+  /* https://grayscale.design/app */
+  /* https://paletton.com */
+
+  --grayscale-l-50:  96.05%;
+  --grayscale-l-100: 92.37%;
+  --grayscale-l-200: 83.85%;
+  --grayscale-l-300: 72.67%;  
+  --grayscale-l-400: 50.44%;
+  --grayscale-l-500: 40.22%;
+  --grayscale-l-600: 32.62%;
+  --grayscale-l-700: 28.49%;
+  --grayscale-l-800: 22.20%;
+  --grayscale-l-900: 18.25%;
+
+  --color-deg-orange: 36deg;
+  --color-deg-yellow: 56deg;  
+  --color-deg-green: 128deg;
+  --color-deg-blue: 200deg;
+  --color-deg-purple: 272deg;
+  --color-deg-red: 344deg;
+  --color-deg-test: 66deg;
+
+  /*
+  primary
+      hsl(200, 60%, 62%)
+  */
+  /* 
+    secondary 
+      hsl(32, 100%, 72%) 
+  */
+
+  --hsl-secondary-s: 100%;
+  --hsl-primary-s: 59.80%;
+  --hsl-gray-s: 4.80%;
+
+
+  --hsl-secondary: var(--color-deg-orange) var(--hsl-secondary-s) var(--grayscale-l-300);
+  --hsl-primary: var(--color-deg-blue) var(--hsl-primary-s) var(--grayscale-l-400);
+
+  /* card - 900 */
+  --hsl-gray-50:  var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-50);
+  --hsl-gray-100: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-100);
+  --hsl-gray-200: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-200);
+  --hsl-gray-300: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-300);
+  --hsl-gray-400: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-400);
+  --hsl-gray-500: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-500);
+  --hsl-gray-600: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-600);
+  --hsl-gray-700: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-700);
+  --hsl-gray-800: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-800);
+  --hsl-gray-900: var(--color-deg-blue) var(--hsl-gray-s) var(--grayscale-l-900);
+
+  --glow-hsl-l: 72.67%;
+  --glow-hsl-s: 70%; 
+  --glow-hsl-a: 0.4;
+  
 
   --font-size-base: 1rem;
   --line-height-base: 1.5rem;
@@ -118,6 +147,9 @@ body {
   display: flex;
   flex-flow: column nowrap;
   flex: 1 1 auto;
+
+  /* set default color */
+  color: var(--text-dark-high); 
 }
 
 /*
@@ -203,4 +235,10 @@ h4 {
 h5 {
   font-size: var(--font-size-xl);
   line-height: var(--line-height-xl);
+}
+
+a, a:hover, a:active {
+  color: inherit;
+  text-decoration: none;
+  border-color: inherit;
 }

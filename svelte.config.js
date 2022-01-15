@@ -10,17 +10,20 @@ const config = {
 	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
 	preprocess: preprocess({
+    globalStyle: true,
     sourceMap: true,
-    postcss: {
-      plugins: [
+    postcss: {      
+      plugins: [                
         autoprefixer(),
-        presetEnv({
+        presetEnv({          
           features: {
             'nesting-rules': true,
             'custom-properties': true,
             'gap-properties': true,
             'not-pseudo-class': true,
-            'custom-media-queries': true,
+            'custom-media-queries': {
+              importFrom: 'src/style/queries.pcss',
+            },
           },
         }),
       ],
