@@ -36,7 +36,7 @@
     { name: 'c++', type: SkillType.Language, rank: 3, link: 'https://www.cplusplus.com/'},
     { name: 'css', type: SkillType.Language, rank: 4, link: 'https://developer.mozilla.org/en-US/docs/Web/CSS'},
     { name: 'deno', type: SkillType.Framework, rank: 1, link: 'https://deno.land/'},
-    { name: 'docker-compose', type: SkillType.Tool, rank: 5, link: 'docker-compose'},
+    { name: 'docker-compose', type: SkillType.Tool, rank: 5, link: 'https://docs.docker.com/compose/'},
     { name: 'docker', type: SkillType.Tool, rank: 5, link: 'https://www.docker.com/'},
     { name: 'git', type: SkillType.Tool, rank: 3, link: 'https://git-scm.com/'},
     { name: 'github', type: SkillType.Tool, rank: 3, link: 'https://github.com/'},
