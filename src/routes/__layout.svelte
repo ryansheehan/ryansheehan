@@ -7,7 +7,7 @@
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Signika+Negative:wght@400;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Signika+Negative:wght@400;700&display=swap" rel="stylesheet">   
 </svelte:head>
 
 
@@ -26,7 +26,7 @@
   .color-blue, .color-blue--hover {
     --glow-hsl-deg: var(--color-deg-blue);
   }
-  .color-blue, .color-blue--hover:hover {
+  .color-blue, .color-blue--hover:hover, .color-blue--hover:active {
     color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
     border-color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
   }
@@ -34,7 +34,7 @@
   .color-orange, .color-orange--hover {
     --glow-hsl-deg: var(--color-deg-orange);
   }
-  .color-orange, .color-orange--hover:hover {
+  .color-orange, .color-orange--hover:hover, .color-orange--hover:active {
     color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
     border-color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
   }
@@ -42,7 +42,7 @@
   .color-green, .color-green--hover {
     --glow-hsl-deg: var(--color-deg-green);
   }
-  .color-green, .color-green--hover:hover {
+  .color-green, .color-green--hover:hover, .color-green--hover:active {
     color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
     border-color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
   }
@@ -50,7 +50,7 @@
   .color-purple, .color-purple--hover {
     --glow-hsl-deg: var(--color-deg-purple);
   }
-  .color-purple, .color-purple--hover:hover {
+  .color-purple, .color-purple--hover:hover, .color-purple--hover:active {
     color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
     border-color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
   }
@@ -58,7 +58,7 @@
   .color-red, .color-red--hover {
     --glow-hsl-deg: var(--color-deg-red);
   }
-  .color-red, .color-red--hover:hover {
+  .color-red, .color-red--hover:hover, .color-red--hover:active {
     color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
     border-color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
   }
@@ -66,7 +66,7 @@
   .color-yellow, .color-yellow--hover {
     --glow-hsl-deg: var(--color-deg-yellow);
   }
-  .color-yellow, .color-yellow--hover:hover {
+  .color-yellow, .color-yellow--hover:hover, .color-yellow--hover:active {
     color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
     border-color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
   }
@@ -74,12 +74,12 @@
   .color-test, .color-test--hover {
     --glow-hsl-deg: var(--color-deg-test);
   }
-  .color-test, .color-test--hover:hover {
+  .color-test, .color-test--hover:hover, .color-test--hover:active {
     color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
     border-color: hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l));
   }
 
-  .glow, .glow--hover:hover {
+  .glow, .glow--hover:hover, .glow--hover:active {
     filter: drop-shadow(0 0 4px hsl(var(--glow-hsl-deg) var(--glow-hsl-s) var(--glow-hsl-l) / var(--glow-hsl-a)));
   }
 

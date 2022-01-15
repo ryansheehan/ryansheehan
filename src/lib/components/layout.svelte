@@ -24,5 +24,6 @@
 
   footer {
     flex: none;
+    text-align: center;
   }
 </style>

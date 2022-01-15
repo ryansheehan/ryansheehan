@@ -2,9 +2,8 @@
   import Skills from '$lib/components/skills.svelte';
 </script>
 
-
 <svelte:head>
-  <title>Ryan Sheehan</title>
+  <title>Ryan Sheehan resume</title>
 </svelte:head>
 
 <div>

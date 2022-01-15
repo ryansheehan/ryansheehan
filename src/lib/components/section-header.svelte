@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <h5 class="header"><slot/></h5>
+  <h2 class="header text-2xl"><slot/></h2>
   <span class="spacer"></span>
   <slot name="options"/>
 </div>
@@ -17,6 +17,7 @@
   .wrapper {
     display: flex;
     flex-flow: row wrap;
+    align-items: baseline;
   }
   
   hr {

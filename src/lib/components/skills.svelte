@@ -80,14 +80,26 @@
 <SectionHeader>
   <svelte:fragment>Skills</svelte:fragment>
   <div slot="options" class="skill-filter-container">
-    <label class={filterLanguage ? 'color-orange underline' : ''} for="filter-language">Languages</label>
-    <input type="checkbox" id="filter-language" bind:checked={filterLanguage}>
-    <label class={filterFramework ? 'color-green underline' : ''} for="filter-framework">Frameworks</label>
-    <input type="checkbox" id="filter-framework" bind:checked={filterFramework}>
-    <label class={filterOther ? 'color-red underline' : ''} for="filter-other">Other</label>
-    <input type="checkbox" id="filter-other" bind:checked={filterOther}>
-    <label class={filterTool ? 'color-yellow underline' : ''} for="filter-tool">Tools</label>
-    <input type="checkbox" id="filter-tool" bind:checked={filterTool}>
+    <label 
+      class="skill-filter" 
+      class:color-orange={filterLanguage} 
+      for="filter-language">Languages</label>
+    <input class="visually-hidden" type="checkbox" id="filter-language" bind:checked={filterLanguage}>
+    <label 
+      class="skill-filter"
+      class:color-green={filterFramework}
+      for="filter-framework">Frameworks</label>
+    <input class="visually-hidden" type="checkbox" id="filter-framework" bind:checked={filterFramework}>
+    <label 
+      class="skill-filter"
+      class:color-red={filterOther}
+      for="filter-other">Other</label>
+    <input class="visually-hidden" type="checkbox" id="filter-other" bind:checked={filterOther}>
+    <label 
+      class="skill-filter"
+      class:color-yellow={filterTool}
+      for="filter-tool">Tools</label>
+    <input class="visually-hidden" type="checkbox" id="filter-tool" bind:checked={filterTool}>
   </div>
 </SectionHeader>
 <div class="skills-container">
@@ -105,8 +117,19 @@
 </div>
 
 <style lang="postcss">
-  .underline {
-    text-decoration: underline;
+  .skill-filter {
+    font-size: var(--font-size-xs);
+    line-height: var(--line-height-xs);
+    text-decoration: none;
+    
+    @media (--tablet-and-larger) {
+      font-size: var(--font-size-md);
+      line-height: var(--line-height-md);         
+    }
+
+    @media (--laptop-and-larger) {
+      background-color: red !important;
+    }
   }
 
   .skill-filter-container {    
@@ -127,10 +150,6 @@
     &:hover {
       text-decoration: underline;
     }
-  }
-
-  input[type="checkbox"] {
-    display: none;    
   }
 
   div.skills-container {
