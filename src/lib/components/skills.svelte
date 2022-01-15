@@ -81,7 +81,7 @@
   <svelte:fragment>Skills</svelte:fragment>
   <div slot="options" class="skill-filter-container">
     <label 
-      class="skill-filter" 
+      class="skill-filter glow" 
       class:color-purple={filterLanguage} 
       for="filter-language">Languages</label>
     <input class="visually-hidden" type="checkbox" id="filter-language" bind:checked={filterLanguage}>
@@ -107,7 +107,7 @@
     <a href="{link}" 
       transition:fade={{duration: 300}}     
       animate:flip={{duration: 300}}
-      class="glow--hover" 
+      class="glow" 
       class:color-purple={type === SkillType.Language && filterLanguage}
       class:color-green={type === SkillType.Framework && filterFramework}
       class:color-red={type === SkillType.Other && filterOther}

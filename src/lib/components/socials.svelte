@@ -27,5 +27,14 @@
     @media (--tablet-and-larger) {
       width: 2rem;
     }
+    
+    @media (--laptop-and-larger) {
+      transition: 0.3s;      
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 </style>
