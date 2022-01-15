@@ -29,7 +29,7 @@
   const sortSkills = (a:ISkill, b:ISkill) => b.rank - a.rank;
 
   const skills: ISkill[] = [
-    { name: 'agile', type: SkillType.Other, rank: 5, link: 'https://en.wikipedia.org/wiki/Agile_Otherware_development' },
+    { name: 'agile', type: SkillType.Other, rank: 4, link: 'https://en.wikipedia.org/wiki/Agile_Otherware_development' },
     { name: 'angular', type: SkillType.Framework, rank: 5, link: 'https://angular.io/' },    
     { name: 'aws', type: SkillType.Tool, rank: 2, link: 'https://aws.amazon.com/'},
     { name: 'c#', type: SkillType.Language, rank: 5, link: 'https://docs.microOther.com/en-us/dotnet/csharp/'},
@@ -44,7 +44,7 @@
     { name: 'javascript', type: SkillType.Language, rank: 4, link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
     { name: 'jira', type: SkillType.Tool, rank: 3, link: 'https://www.atlassian.com/Otherware/jira'},
     { name: 'kubernetes', type: SkillType.Tool, rank: 1, link: 'https://kubernetes.io/'},
-    { name: 'ngrx', type: SkillType.Framework, rank: 5, link: 'https://ngrx.io/' },
+    { name: 'ngrx', type: SkillType.Framework, rank: 4, link: 'https://ngrx.io/' },
     { name: 'node', type: SkillType.Framework, rank: 3, link: 'https://nodejs.org/en/' },
     { name: 'python', type: SkillType.Language, rank: 1, link: 'https://www.python.org/' },
     { name: 'react', type: SkillType.Framework, rank: 3, link: 'https://reactjs.org/' },
@@ -82,7 +82,7 @@
   <div slot="options" class="skill-filter-container">
     <label 
       class="skill-filter" 
-      class:color-orange={filterLanguage} 
+      class:color-purple={filterLanguage} 
       for="filter-language">Languages</label>
     <input class="visually-hidden" type="checkbox" id="filter-language" bind:checked={filterLanguage}>
     <label 
@@ -108,10 +108,10 @@
       transition:fade={{duration: 300}}     
       animate:flip={{duration: 300}}
       class="glow--hover" 
-      class:color-orange--hover={type === SkillType.Language}
-      class:color-green--hover={type === SkillType.Framework}
-      class:color-red--hover={type === SkillType.Other}
-      class:color-yellow--hover={type === SkillType.Tool}
+      class:color-purple={type === SkillType.Language && filterLanguage}
+      class:color-green={type === SkillType.Framework && filterFramework}
+      class:color-red={type === SkillType.Other && filterOther}
+      class:color-yellow={type === SkillType.Tool && filterTool}
     >{name}</a>
   {/each}
 </div>
@@ -128,7 +128,9 @@
     }
 
     @media (--laptop-and-larger) {
-      background-color: red !important;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 
@@ -161,8 +163,16 @@
   }
 
   a {
-    padding: 0 8px;
+    padding: 0 4px;
     border-radius: 8px;
-    border: 1px solid;    
+    /* border: 1px solid;     */
+
+    &:after {
+      content: ',';
+    }
+
+    &:last-of-type:after {
+      content: '';
+    }
   }
 </style>
