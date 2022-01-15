@@ -12,26 +12,26 @@
   --color-black: #000;
 
   --text-light-high: hsl(0 0% 100% / 0.87);  
-  --text-light-medium: hsl(0 0% 100% / 0.60);
+  --text-light-medium: hsl(0 0% 100% / 0.76);
   --text-light-disabled: hsl(0 0% 100% / 0.38);
   --text-dark-disabled: hsl(0 0% 0% / 0.38);
   --text-dark-high: hsl(0 0% 0% / 0.87);
-  --text-dark-medium: hsl(0 0% 0% / 0.60);
+  --text-dark-medium: hsl(0 0% 0% / 0.65);
   --text-dark-disabled: hsl(0 0% 0% / 0.38);
 
-  --shadow-color: 0deg 0% 67%;
+  --shadow-hsl: 0deg 0% 67%;
   --shadow-elevation-low:
-    0.7px 0.5px 1.1px hsl(var(--shadow-color) / 0.27),
-    2.5px 1.7px 3.9px -1.5px hsl(var(--shadow-color) / 0.45);
+    0.7px 0.5px 1.1px hsl(var(--shadow-hsl) / 0.27),
+    2.5px 1.7px 3.9px -1.5px hsl(var(--shadow-hsl) / 0.45);
   --shadow-elevation-medium:
-    0.7px 0.5px 1.1px hsl(var(--shadow-color) / 0.25),
-    3.7px 2.6px 5.8px -0.7px hsl(var(--shadow-color) / 0.37),
-    12.4px 8.7px 19.3px -1.5px hsl(var(--shadow-color) / 0.48);
+    0.7px 0.5px 1.1px hsl(var(--shadow-hsl) / 0.25),
+    3.7px 2.6px 5.8px -0.7px hsl(var(--shadow-hsl) / 0.37),
+    12.4px 8.7px 19.3px -1.5px hsl(var(--shadow-hsl) / 0.48);
   --shadow-elevation-high:
-    0.7px 0.5px 1.1px hsl(var(--shadow-color) / 0.35),
-    9.5px 6.7px 14.8px -0.5px hsl(var(--shadow-color) / 0.47),
-    24.3px 17.2px 38px -1px hsl(var(--shadow-color) / 0.59),
-    57.9px 40.9px 90.4px -1.5px hsl(var(--shadow-color) / 0.7);
+    0.7px 0.5px 1.1px hsl(var(--shadow-hsl) / 0.35),
+    9.5px 6.7px 14.8px -0.5px hsl(var(--shadow-hsl) / 0.47),
+    24.3px 17.2px 38px -1px hsl(var(--shadow-hsl) / 0.59),
+    57.9px 40.9px 90.4px -1.5px hsl(var(--shadow-hsl) / 0.7);
 
   /* https://grayscale.design/app */
   /* https://paletton.com */

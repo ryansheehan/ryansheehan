@@ -8,8 +8,8 @@
 </svelte:head>
 
 <div>
-  <section><Summary/></section>
-  <section><Skills/></section>
+  <Summary/> 
+  <Skills/>
 </div>
 
 <style lang="postcss">

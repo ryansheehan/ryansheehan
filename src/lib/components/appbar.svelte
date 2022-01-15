@@ -20,7 +20,7 @@
     }
   }
 
-  h1 {
+  h1 {    
     padding-left: 16px;
     white-space: nowrap;    
   } 
