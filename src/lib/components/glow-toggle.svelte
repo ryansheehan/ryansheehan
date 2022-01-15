@@ -19,11 +19,11 @@
     opacity: 0.8;
     transition: 0.3s;
 
-    @media (--tablet-and-larger) {
+    @media screen and  (--tablet-and-larger) {
       cursor: pointer;
     }
 
-    @media (--laptop-and-larger) {      
+    @media screen and  (--laptop-and-larger) {      
       &:hover {
         opacity: 1;
         text-decoration: underline;

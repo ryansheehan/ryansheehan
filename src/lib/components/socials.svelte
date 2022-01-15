@@ -24,11 +24,11 @@
 
   a {    
     width: 1.5rem;
-    @media (--tablet-and-larger) {
+    @media screen and  (--tablet-and-larger) {
       width: 2rem;
     }
     
-    @media (--laptop-and-larger) {
+    @media screen and  (--laptop-and-larger) {
       transition: 0.3s;      
       opacity: 0.7;
 

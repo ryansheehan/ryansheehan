@@ -48,7 +48,7 @@
     padding: 16px 32px; 
     transition: 0.3s;
     
-    @media (--laptop-and-larger) {
+    @media screen and  (--laptop-and-larger) {
       margin: 16px 0;
       border-radius: 16px;
     }

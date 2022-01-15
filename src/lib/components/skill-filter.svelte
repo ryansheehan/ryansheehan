@@ -9,6 +9,7 @@
 </script>
 
 <div class="text-sm">
+  <span>Filter:</span>
   <GlowToggle label="Languages" color={Color.Purple} bind:checked={filterLanguage}/>
   <GlowToggle label="Frameworks" color={Color.Green} bind:checked={filterFramework}/>
   <GlowToggle label="Other" color={Color.Red} bind:checked={filterOther}/>
