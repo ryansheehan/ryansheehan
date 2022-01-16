@@ -56,7 +56,6 @@
   --color-deg-test: 66deg;   
   --color-sl: 70% 72.67%;  
   --glow-l-a: 0.4;
-  --glow: drop-shadow(0 0 4px hsl(var(--color-hsl) / var(--glow-l-a)));
 
   /*
   primary
@@ -320,7 +319,7 @@ a {
 }
 
 .glow, .glow--hover:hover, .glow--hover:active {
-  filter: --var(--glow);
+  filter: drop-shadow(0 0 4px hsl(var(--color-deg) var(--color-sl) / var(--glow-l-a)));
 }
 
 .glow--hover {  
