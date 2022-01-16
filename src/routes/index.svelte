@@ -16,7 +16,7 @@
 
 <style lang="postcss">
   div {
-    height: 2000px;    
+    /* height: 2000px;     */
     display: flex;
     flex-flow: column nowrap;
     gap: 32px;

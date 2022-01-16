@@ -2,12 +2,14 @@
   import Email from '$lib/icons/email.svelte';  
   import LinkedIn from '$lib/icons/linkedin.svelte';
   import Github from '$lib/icons/github.svelte';
+  import Phone from '$lib/icons/phone.svelte'
 
   let className: string | undefined = undefined;
   export {className as class};
 </script>
 
 <div class={className}>
+  <a class="color-blue" href="tel:+1-630-248-8741"><Phone/></a>
   <a class="color-blue glow--hover" href="mailto:rsheehan@gmail.com"><Email/></a>
   <a class="color-blue glow--hover" href="https://www.linkedin.com/in/sheehanr/"><LinkedIn/></a>
   <a class="color-blue glow--hover" href="https://github.com/ryansheehan/"><Github/></a>
@@ -17,17 +19,18 @@
   div {
     margin-left: auto;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row-reverse nowrap;
     align-items: center;
-    gap: 4px;    
+    gap: 4px; 
+
+    @media print {
+      display: none;
+    }
   }
 
   a {    
-    width: 1.5rem;
-    @media screen and  (--tablet-and-larger) {
-      width: 2rem;
-    }
-    
+    width: 2rem;    
+
     @media screen and  (--laptop-and-larger) {
       transition: 0.3s;      
       opacity: 0.7;

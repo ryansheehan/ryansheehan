@@ -13,10 +13,21 @@
   .header-content {    
     display: flex;
     flex-flow: row wrap;
-    align-items: center;   
-    
+    align-items: center;    
+
     & :global(.socials) {
-      padding-top: 6px;
+      padding-top: 6px; 
+      display: none;     
+    }      
+  }
+
+  @media (--tablet-and-larger) {
+
+    .header-content {
+      margin-top: 0;
+    }
+    .header-content :global(.socials) {
+      display: flex;      
     }
   }
 

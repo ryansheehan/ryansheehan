@@ -1,7 +1,6 @@
 <script lang="ts">  
   import '../style/global.css';
   import Layout from '$lib/components/layout.svelte';
-  
 </script>
 
 <svelte:head>
@@ -15,22 +14,7 @@
 
 
 <style lang="postcss" global>
-  .glow-bright {
-    --glow-hsl-a: 0.7;
-  }
-
-  .glow-dim {
-    --glow-hsl-a: 0.15;
-  }
-
-  .glow, .glow--hover:hover, .glow--hover:active {
-    filter: --var(--glow);
-  }
-
-  .glow--hover {  
-    transition-property: color, filter;
-    transition-duration: 0.5s; 
-  }
+  
 
   body {
     background-color: hsl(var(--hsl-gray-500)); 
@@ -40,7 +24,7 @@
   #svelte {
     flex: 1;        
     display: flex;        
-    flex-direction: column nowrap;
+    flex-flow: column nowrap;
     width: 100%;
     max-width: 800px;        
     background-color: hsl(var(--hsl-gray-900)); 
