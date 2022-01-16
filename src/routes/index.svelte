@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Education from '$lib/components/education.svelte';
   import Experience from '$lib/components/experience.svelte';
   import Skills from '$lib/components/skills.svelte';
   import Summary from '$lib/components/summary.svelte';
@@ -12,6 +13,7 @@
   <Summary/> 
   <Skills/>
   <Experience/>
+  <Education/>
 </div>
 
 <style lang="postcss">
