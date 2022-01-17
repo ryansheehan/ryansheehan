@@ -193,6 +193,12 @@ p, h1, h2, h3, h4, h5, h6 {
   height: 0;
 }
 
+@media print {
+  #modal {
+    display: none;
+  }
+}
+
 /*
   10. setup typography
 */

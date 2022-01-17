@@ -1,18 +1,19 @@
 <script lang="ts">
   import Email from '$lib/icons/email.svelte';  
   import LinkedIn from '$lib/icons/linkedin.svelte';
-  import Github from '$lib/icons/github.svelte';
-  import Phone from '$lib/icons/phone.svelte'
+  import Github from '$lib/icons/github.svelte';  
+  import Phone from '$lib/icons/phone.svelte';
+  import { emailModal } from '$lib/store/modal';
 
   let className: string | undefined = undefined;
   export {className as class};
 </script>
 
-<div class={className}>
-  <a class="color-blue" href="tel:+1-630-248-8741"><Phone/></a>
-  <a class="color-blue glow--hover" href="mailto:rsheehan@gmail.com"><Email/></a>
-  <a class="color-blue glow--hover" href="https://www.linkedin.com/in/sheehanr/"><LinkedIn/></a>
-  <a class="color-blue glow--hover" href="https://github.com/ryansheehan/"><Github/></a>
+<div class={className}>  
+  <a class="phone social color-blue" href="tel:+1-630-248-8741"><Phone/></a>
+  <div class="social color-blue glow--hover" on:click={() => emailModal.open()}><Email/></div>
+  <a class="social color-blue glow--hover" href="https://www.linkedin.com/in/sheehanr/"><LinkedIn/></a>
+  <a class="social color-blue glow--hover" href="https://github.com/ryansheehan/"><Github/></a>
 </div>
 
 <style lang="postcss">
@@ -21,14 +22,18 @@
     display: flex;
     flex-flow: row-reverse nowrap;
     align-items: center;
-    gap: 4px; 
+    gap: 16px;     
 
     @media print {
       display: none;
     }
+
+    @media screen and (--tablet-and-larger) {
+      gap: 4px;
+    }
   }
 
-  a {    
+  .social {    
     width: 2rem;    
 
     @media screen and  (--laptop-and-larger) {
@@ -38,6 +43,11 @@
       &:hover {
         opacity: 1;
       }
+
+      &.phone {
+        display: none;
+      }
     }
   }
+
 </style>

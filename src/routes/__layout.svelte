@@ -1,6 +1,7 @@
 <script lang="ts">  
   import '../style/global.css';
   import Layout from '$lib/components/layout.svelte';
+  import Modals from '$lib/components/modals/modals.svelte';
 </script>
 
 <svelte:head>
@@ -11,7 +12,7 @@
 
 
 <Layout><slot/></Layout>
-
+<Modals/>
 
 <style lang="postcss" global>
   
