@@ -138,6 +138,7 @@ html {
   min-height: 100%;  
   display: flex;
   flex-flow: column nowrap;
+  scroll-behavior: smooth;
 }
 
 body {  
@@ -268,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
 a {
   color: inherit;
   text-decoration: none;
-  border-color: inherit;
+  border-color: inherit; 
 }
 
 .color-blue, .color-blue--hover {
@@ -318,11 +319,11 @@ a {
   --glow-l-a: 0.15;
 }
 
-.glow, .glow--hover:hover, .glow--hover:active {
-  filter: drop-shadow(0 0 4px hsl(var(--color-deg) var(--color-sl) / var(--glow-l-a)));
-}
-
 .glow--hover {  
   transition-property: color, filter;
   transition-duration: 0.5s; 
+}
+
+.glow, .glow--hover:hover, .glow--hover:active {
+  filter: drop-shadow(0 0 4px hsl(var(--color-deg) var(--color-sl) / var(--glow-l-a)));
 }
