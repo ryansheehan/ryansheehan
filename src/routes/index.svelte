@@ -22,5 +22,6 @@
     display: flex;
     flex-flow: column nowrap;
     gap: 2rem;
+    padding-bottom: 2rem;
   }
 </style>

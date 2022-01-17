@@ -23,5 +23,9 @@
     gap: 8px;
     align-items: center;
     text-align: center;
+
+    @media print {
+      display:none;
+    }
   }
 </style>

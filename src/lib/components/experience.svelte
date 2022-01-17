@@ -33,8 +33,8 @@
   }
 
   .company, .time {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-lg);
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-md);
   }
 
   .experience {
@@ -48,8 +48,8 @@
 
     @media screen and (--tablet-and-larger) {
       grid-template-areas:
-      "title title time"
-      "company company company"
+      "title title title"
+      "company company time"
       "achievements achievements achievements";
     }
   }

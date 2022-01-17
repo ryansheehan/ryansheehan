@@ -67,5 +67,26 @@ export const experience: Experience[] = [
       `Communicated directly with publishers to resolve certification issues`,
       `Implemented motion control systems`,
     ]
+  },
+  {
+    company: 'Oh My Heart and Home LLC.',
+    title: 'Co-owner and developer',
+    start: 'Sept 2020',
+    achievements: [
+      `Food blog and recipe site with an emphasis on automating nutritional calculation.`,
+      `Caters to people that have a medical need for accurate nutrition`,
+      `Under active development with a plan to release in 2022.`
+    ]
+  },
+  {
+    company: 'Timeless Wedding Impressions',
+    title: 'Co-owner and developer',
+    start: 'Sept 2009',
+    end: 'Oct 2014',
+    achievements: [
+      `Online artificial wedding bouquets, boutonnieres, and hair-flowers`,
+      `Developed the store front with Magento`,
+      `Helped process orders, general accounting, managed part-time staff`,
+    ]
   }
 ];
