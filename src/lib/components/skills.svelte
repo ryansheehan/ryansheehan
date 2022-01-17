@@ -67,7 +67,17 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    align-content: flex-start;
     gap: 8px;
+    min-height: 184px;
+
+    @media screen and (--tablet-and-larger) {
+      min-height: 120px;
+    }
+
+    @media screen and (--laptop-and-larger) {
+      min-height: 88px;
+    }
   }  
 
   a.skill {
