@@ -42,8 +42,10 @@
 
       &:hover {
         opacity: 1;
-      }
+      }      
+    }
 
+    @media screen and (--tablet-and-larger) {
       &.phone {
         display: none;
       }

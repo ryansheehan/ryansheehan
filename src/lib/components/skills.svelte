@@ -31,11 +31,11 @@
     })];
   }
 
-  function isNotFiltered(type: SkillType) {
-    return (type === SkillType.Language && filterLanguage) ||
+  function isSelected(type: SkillType) {
+    return ((type === SkillType.Language && filterLanguage) ||
       (type === SkillType.Framework && filterFramework) ||
       (type === SkillType.Other && filterOther) ||
-      (type === SkillType.Tool && filterTool);
+      (type === SkillType.Tool && filterTool));
   }  
 </script>
 
@@ -50,7 +50,7 @@
         transition:fade={{duration: 300}}     
         animate:flip={{duration: 300}}
         class="glow skill"
-        class:not-filtered={isNotFiltered(type)} 
+        class:selected={isSelected(type)} 
         class:color-purple={type === SkillType.Language && filterLanguage}
         class:color-green={type === SkillType.Framework && filterFramework}
         class:color-red={type === SkillType.Other && filterOther}
@@ -68,13 +68,7 @@
     flex-flow: row wrap;
     justify-content: center;
     gap: 8px;
-  }
-
-  a.not-filtered:hover {
-    @media screen and (--laptop-and-larger) {
-      opacity: 1;
-    }
-  }
+  }  
 
   a.skill {
     padding: 0 4px;
@@ -83,6 +77,10 @@
     @media screen and (--laptop-and-larger) {
       transition: opacity 0.3s;
       opacity: 0.7;
+
+      &:hover, &.selected {
+        opacity: 1;        
+      }
     }
 
     &:after {
