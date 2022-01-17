@@ -4,13 +4,14 @@
   import Github from '$lib/icons/github.svelte';  
   import Phone from '$lib/icons/phone.svelte';
   import { emailModal } from '$lib/store/modal';
+  import { phone } from '$lib/resume/contact';
 
   let className: string | undefined = undefined;
   export {className as class};
 </script>
 
 <div class={className}>  
-  <a class="phone social color-blue" href="tel:+1-630-248-8741"><Phone/></a>
+  <a class="phone social color-blue" href="tel:{phone}"><Phone/></a>
   <div class="social color-blue glow--hover" on:click={() => emailModal.open()}><Email/></div>
   <a class="social color-blue glow--hover" href="https://www.linkedin.com/in/sheehanr/"><LinkedIn/></a>
   <a class="social color-blue glow--hover" href="https://github.com/ryansheehan/"><Github/></a>
