@@ -10,20 +10,21 @@
   export {className as class};
 </script>
 
-<div class={className}>  
+<div class="socials-container {className}">  
   <a class="phone social color-blue" href="tel:{phone}"><Phone/></a>
-  <div class="social color-blue glow--hover" on:click={() => emailModal.open()}><Email/></div>
+  <span class="social color-blue glow--hover" on:click={() => emailModal.open()}><Email/></span>
   <a class="social color-blue glow--hover" href="https://www.linkedin.com/in/sheehanr/"><LinkedIn/></a>
   <a class="social color-blue glow--hover" href="https://github.com/ryansheehan/"><Github/></a>
 </div>
 
 <style lang="postcss">
-  div {
+  .socials-container {
     margin-left: auto;
     display: flex;
     flex-flow: row-reverse nowrap;
     align-items: center;
-    gap: 16px;     
+    justify-content: center;
+    gap: 16px;         
 
     @media print {
       display: none;

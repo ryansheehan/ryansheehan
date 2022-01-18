@@ -16,7 +16,7 @@ export const experience: Experience[] = [
       `Responsible for the development and maintenance of 20 different web-applications and services`,
       `Lead a committee dedicated to promoting front-end practices across the organization`,
       `Train engineers across the organization on web-application technologies; primarily angular, dotnet core, and docker`,
-      `Work with other managers and the CTO to set vision and direction for the Tyler's transition to the cloud`,
+      `Work with other managers and the CTO to set vision and direction for Tyler's transition to the cloud`,
     ]
   },
   {
@@ -29,7 +29,7 @@ export const experience: Experience[] = [
       `Served as an R&D developer prototyping application ideas and 3rd party tools`,
       `Developed and promoted the use of docker within Tyler`,
       `Helped to administer TeamCity, ProGet, and Bitbucket`,
-      `Developed and Co-led a training program for introducing how to build web applications`
+      `Developed and co-led a training program for introducing how to build web applications`
     ]
   },
   {
@@ -58,12 +58,12 @@ export const experience: Experience[] = [
   },
   {
     company: 'High Voltage Software',
-    title: 'Game Play Software Engineer',
+    title: 'Gameplay Software Engineer',
     start: 'Mar 2008',
     end: 'Jun 2010',
     achievements: [
-      `Core game-play engineer for Iron Man 2 (Wii, PSP) and High Voltage Hot Rod Show (WiiWare)`,
-      `Worked closely with artists and designers to define game-play elements`,
+      `Core gameplay engineer for Iron Man 2 (Wii, PSP) and High Voltage Hot Rod Show (WiiWare)`,
+      `Worked closely with artists and designers to define gameplay elements`,
       `Communicated directly with publishers to resolve certification issues`,
       `Implemented motion control systems`,
     ]
@@ -75,7 +75,8 @@ export const experience: Experience[] = [
     achievements: [
       `Food blog and recipe site with an emphasis on automating nutritional calculation.`,
       `Caters to people that have a medical need for accurate nutrition`,
-      `Under active development with a plan to release in 2022.`
+      `Under active development with a plan to release in 2022.`,
+      `Built with typescript, node, svelte, sveltekit, groq, and sanity.io`,
     ]
   },
   {

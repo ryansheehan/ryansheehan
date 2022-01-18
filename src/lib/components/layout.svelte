@@ -1,36 +1,11 @@
 <script lang="ts">
-  import AppBar from '$lib/components/appbar.svelte';
-  import Footer from '$lib/components/footer.svelte';
-  import Socials from '$lib/components/socials.svelte';
 </script>
 
-<div class="socials-container">
-  <div>
-    <Socials/>
-  </div>
-</div>
-<header><AppBar/></header>    
-<main>
-  <slot/>
-</main>
-<footer><Footer/></footer>
+<header><slot name="header"/></header>
+<main><slot name="content"/></main>
+<footer><slot name="footer"/></footer>
 
 <style lang="postcss">
-  .socials-container {
-    position: fixed;
-    display: grid;
-    place-items: center;
-    bottom: 0; 
-    left: 0;  
-    right: 0;             
-    padding: 8px;
-    background-color: hsl(var(--hsl-gray-900));
-    z-index: 10;       
-
-    @media screen and (--tablet-and-larger) {
-      display: none;
-    }
-  }
   header {
     flex: none;
     display: fixed;
@@ -41,10 +16,32 @@
 
   main {
     flex: 1 1 auto;
+
+    margin-bottom: 48px;
+
+    @media screen and (--tablet-and-larger) {
+      margin-bottom: 0;
+    }
   }
 
   footer {
     flex: none;
     text-align: center;
+    background-color: hsl(var(--hsl-gray-900));
+    width: 100%;
+
+    padding: 8px;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @media screen and (--tablet-and-larger) {
+      padding: 0;
+      position: revert;
+      bottom: revert;
+      left: revert;
+      transform: none;
+    }
   }
 </style>

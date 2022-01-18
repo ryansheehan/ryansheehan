@@ -2,6 +2,9 @@
   import '../style/global.css';
   import Layout from '$lib/components/layout.svelte';
   import Modals from '$lib/components/modals/modals.svelte';
+
+  import AppBar from '$lib/components/appbar.svelte';
+  import Footer from '$lib/components/footer.svelte';  
 </script>
 
 <svelte:head>
@@ -11,7 +14,11 @@
 </svelte:head>
 
 
-<Layout><slot/></Layout>
+<Layout>
+  <AppBar slot="header"/>  
+  <slot slot="content"/>
+  <Footer slot="footer" />
+</Layout>
 <Modals/>
 
 <style lang="postcss" global>
@@ -32,7 +39,7 @@
     color: var(--text-light-medium);
     padding: 16px 32px; 
     transition: 0.3s;
-    
+
     @media screen and  (--laptop-and-larger) {
       margin: 16px 0;
       border-radius: 16px;
