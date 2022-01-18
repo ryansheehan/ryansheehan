@@ -18,8 +18,7 @@
 </div>
 
 <style lang="postcss">
-  .socials-container {
-    margin-left: auto;
+  .socials-container {    
     display: flex;
     flex-flow: row-reverse nowrap;
     align-items: center;

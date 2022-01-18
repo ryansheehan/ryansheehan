@@ -3,7 +3,7 @@
   import { flip } from 'svelte/animate';
   import Section from '$lib/components/section.svelte';
   import SkillFilter from '$lib/components/skill-filter.svelte';
-  import {ISkill, SkillType, skills} from '$lib/resume/skills';
+  import {ISkill, SkillType, skills} from '$lib/resume/skills';  
 
   let filterLanguage = false;
   let filterFramework = false;
@@ -12,6 +12,7 @@
   let filteredSkills: ISkill[] = [];
   let anyFilter: boolean;
 
+  let container: HTMLElement;
 
   $: {
     anyFilter = filterLanguage || filterFramework || filterOther || filterTool;
@@ -29,6 +30,10 @@
       }
       return true;
     })];
+
+    if (container?.offsetHeight) {
+      container.style.minHeight = `${container.offsetHeight}px`;
+    }
   }
 
   function isSelected(type: SkillType) {
@@ -44,7 +49,7 @@
     <SkillFilter bind:filterLanguage bind:filterFramework bind:filterOther bind:filterTool />
   </svelte:fragment>
 
-  <div class="skills-container">
+  <div class="skills-container" bind:this={container}>
     {#each filteredSkills as {name, type, link} (name)}
       <a href="{link}" 
         transition:fade={{duration: 300}}     
@@ -62,22 +67,12 @@
 
 <style lang="postcss">
   
-  div.skills-container {
-    width: 100%;
+  div.skills-container {   
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-content: flex-start;
-    gap: 8px;
-    min-height: 184px;
-
-    @media screen and (--tablet-and-larger) {
-      min-height: 120px;
-    }
-
-    @media screen and (--laptop-and-larger) {
-      min-height: 88px;
-    }
+    column-gap: 8px;
   }  
 
   a.skill {

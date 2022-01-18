@@ -48,6 +48,10 @@
     }
   }
 
+  a {
+    flex: 1;
+  }
+
   hr {
     margin-top: 8px;
   }

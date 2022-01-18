@@ -2,15 +2,17 @@
   import Socials from '$lib/components/socials.svelte';
 </script>
 
-<div>
+<div class="footer">
   <Socials class="socials"/>
   <p>Copyright &copy; 2022 Ryan Sheehan</p>
 </div>
 
 <style lang="postcss">
-  div :global(.socials) {
-    @media screen and (--tablet-and-larger) {
-      display: none;
-    }
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
   }
 </style>
