@@ -23,9 +23,14 @@
     gap: 8px;
     align-items: center;
     text-align: center;
+    width: 100%;
 
     @media print {
       display:none;
     }
+  }
+
+  span {
+    margin-right: auto;
   }
 </style>
