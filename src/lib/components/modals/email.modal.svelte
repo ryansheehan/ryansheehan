@@ -3,8 +3,9 @@
   import { fade } from 'svelte/transition';
   import Modal from './modal.svelte';
   import CopyClipboard from '$lib/components/copy-clipboard.svelte';
-  import { email } from '$lib/resume/contact';
   import CenterCard from './center-card.svelte';
+
+  export let email: string;
 
   let copied = false;
   const copyEmail = () => {

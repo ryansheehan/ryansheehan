@@ -3,7 +3,9 @@
   import { flip } from 'svelte/animate';
   import Section from '$lib/components/section.svelte';
   import SkillFilter from '$lib/components/skill-filter.svelte';
-  import {ISkill, SkillType, skills} from '$lib/resume/skills';  
+  import {ISkill, SkillType} from '$lib/resume';  
+
+  export let skills: ISkill[];
 
   let filterLanguage = false;
   let filterFramework = false;

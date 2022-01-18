@@ -1,9 +1,12 @@
 <script lang="ts">
   import Socials from '$lib/components/socials.svelte';
+  import type {Contact} from '$lib/resume';
+
+  export let contact: Contact;
 </script>
 
 <div class="footer">
-  <Socials class="socials"/>
+  <Socials {contact} />
   <p>Copyright &copy; 2022 Ryan Sheehan</p>
 </div>
 

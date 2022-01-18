@@ -4,7 +4,10 @@
   import Github from '$lib/icons/github.svelte';  
   import Phone from '$lib/icons/phone.svelte';
   import { emailModal } from '$lib/store/modal';
-  import { phone } from '$lib/resume/contact';
+  import type { Contact } from '$lib/resume';
+
+  export let contact: Contact;
+  const {phone, linkedIn, github} = contact;
 
   let className: string | undefined = undefined;
   export {className as class};
@@ -13,8 +16,8 @@
 <div class="socials-container {className}">  
   <a class="phone social color-blue" href="tel:{phone}"><Phone/></a>
   <span class="social color-blue glow--hover" on:click={() => emailModal.open()}><Email/></span>
-  <a class="social color-blue glow--hover" href="https://www.linkedin.com/in/sheehanr/"><LinkedIn/></a>
-  <a class="social color-blue glow--hover" href="https://github.com/ryansheehan/"><Github/></a>
+  <a class="social color-blue glow--hover" href="https://www.linkedin.com/in/{linkedIn}/"><LinkedIn/></a>
+  <a class="social color-blue glow--hover" href="https://github.com/{github}/"><Github/></a>
 </div>
 
 <style lang="postcss">

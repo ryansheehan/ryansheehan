@@ -1,10 +1,13 @@
 <script lang="ts">  
   import '../style/global.css';
   import Layout from '$lib/components/layout.svelte';
-  import Modals from '$lib/components/modals/modals.svelte';
+  import EmailModal from '$lib/components/modals/email.modal.svelte';
 
   import AppBar from '$lib/components/appbar.svelte';
-  import Footer from '$lib/components/footer.svelte';  
+  import Footer from '$lib/components/footer.svelte'; 
+  
+  import { resume } from '$lib/resume';
+  const {contact} = resume;
 </script>
 
 <svelte:head>
@@ -15,11 +18,11 @@
 
 
 <Layout>
-  <AppBar slot="header"/>  
+  <AppBar slot="header" {contact}/>  
   <slot slot="content"/>
-  <Footer slot="footer" />
+  <Footer slot="footer" {contact}/>
 </Layout>
-<Modals/>
+<EmailModal email={contact.email} />
 
 <style lang="postcss" global>
   

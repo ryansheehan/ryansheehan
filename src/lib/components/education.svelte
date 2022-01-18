@@ -1,6 +1,8 @@
 <script lang="ts">
   import Section from '$lib/components/section.svelte';
-  import {education} from '$lib/resume/education';
+  import type {Education} from '$lib/resume';
+
+  export let education: Education[];
 </script>
 
 <Section header="Education">

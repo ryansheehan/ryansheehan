@@ -3,6 +3,9 @@
   import Experience from '$lib/components/experience.svelte';
   import Skills from '$lib/components/skills.svelte';
   import Summary from '$lib/components/summary.svelte';
+
+  import { resume } from '$lib/resume';
+  const { summary, skills, experience, education } = resume;
 </script>
 
 <svelte:head>
@@ -10,10 +13,10 @@
 </svelte:head>
 
 <div>
-  <Summary/> 
-  <Skills/>
-  <Experience/>
-  <Education/>
+  <Summary {summary}/> 
+  <Skills {skills}/>
+  <Experience {experience}/>
+  <Education {education}/>
 </div>
 
 <style lang="postcss">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import {summary} from '$lib/resume/summary';
+  export let summary: string;
 </script>
 
 <section>

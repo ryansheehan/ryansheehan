@@ -1,11 +1,15 @@
 <script lang="ts">
   import Socials from '$lib/components/socials.svelte';
+  import type { Contact } from '$lib/resume';
+
+  export let contact: Contact;
+  
 </script>
 
 <div class="header-content">
   <img src="https://www.gravatar.com/avatar/559b2e9fe5620de0994a0de5180cd6eb" alt="Ryan Sheehan" />
   <a class="color-blue--hover glow--hover" href="/"><h1 class="text-3xl">Ryan Sheehan</h1></a>  
-  <Socials class="socials"/>
+  <Socials class="socials" {contact}/>
 </div>
 <hr/>
 
