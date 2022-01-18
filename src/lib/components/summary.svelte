@@ -23,6 +23,7 @@
 
     &:after {
       content: close-quote;
+      margin-left: -2px;
     }
   }
 </style>
