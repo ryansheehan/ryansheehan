@@ -69,7 +69,7 @@ export const resume: Resume = {
     { name: 'github', type: SkillType.Tool, rank: 3, link: 'https://github.com/'},
     { name: 'html', type: SkillType.Language, rank: 4, link: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
     { name: 'javascript', type: SkillType.Language, rank: 4, link: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-    { name: 'jira', type: SkillType.Tool, rank: 3, link: 'https://www.atlassian.com/Otherware/jira'},
+    { name: 'jira', type: SkillType.Tool, rank: 3, link: 'https://www.atlassian.com/software/jira'},
     { name: 'kubernetes', type: SkillType.Tool, rank: 1, link: 'https://kubernetes.io/'},
     { name: 'ngrx', type: SkillType.Framework, rank: 4, link: 'https://ngrx.io/' },
     { name: 'node', type: SkillType.Framework, rank: 3, link: 'https://nodejs.org/en/' },
@@ -129,7 +129,7 @@ export const resume: Resume = {
       end: 'Jun 2013',
       achievements: [
         `Lead developer on a large WPF application design to manage and track down-hole drilling tools`,
-        `Developed a near-realtime 3D application, with Unity3D, that reflected down-hole tool data`,
+        `Developed a near real-time 3D application, with Unity3D, that reflected down-hole tool data`,
         `Oversaw and reviewed code developed by an outsourced team located in Vietnam`,
         `Received extensive training in agile development`
       ]
