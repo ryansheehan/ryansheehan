@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="ts">  
   import { emailModal } from '$lib/store/modal';
   import { fade } from 'svelte/transition';
   import Modal from './modal.svelte';
@@ -15,7 +15,7 @@
 </script>
 
 <Modal modal={emailModal}>  
-  <CenterCard width="300px" height="300px">
+  <CenterCard width="300px" height="300px" onClose={emailModal.close}>
     <div class="copy-container">
       <div style="height: var(--line-height-md)">
         {#if copied}

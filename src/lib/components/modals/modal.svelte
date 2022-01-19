@@ -45,7 +45,7 @@
 {#if $modal}
 <Portal target="#modal">
   <div class="backdrop" on:click={modal.close} transition:fade={{duration: 150}}/>
-  <div class="content-wrapper">
+  <div class="content-wrapper" transition:fade={{duration: 150}}>
     <slot></slot>
   </div>
 </Portal>
