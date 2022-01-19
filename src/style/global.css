@@ -3,7 +3,7 @@
   --half-element-spacing: calc(var(--element-spacing) / 2);
   --page-padding: 16px;
 
-  --font-family-header: 'Playfair Display', serif;
+  --font-family-header: 'PT Serif', serif;  
   --font-family-content: 'Signika Negative', sans-serif;
   --font-weight-base: 400;
   --font-weight-bold: 700;
