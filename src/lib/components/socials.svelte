@@ -15,12 +15,18 @@
 
 <div class="socials-container {className}">  
   <a class="phone social color-blue" href="tel:{phone}"><Phone/></a>
-  <span class="social color-blue glow--hover" on:click={() => emailModal.open()}><Email/></span>
-  <a class="social color-blue glow--hover" href="https://www.linkedin.com/in/{linkedIn}/"><LinkedIn/></a>
-  <a class="social color-blue glow--hover" href="https://github.com/{github}/"><Github/></a>
+  <span class="email social color-blue glow--hover" on:click={() => emailModal.open()}><Email/></span>
+  <a class="social color-blue glow--hover" href="https://www.linkedin.com/in/{linkedIn}/" target="_blank" rel="noopener"><LinkedIn/></a>
+  <a class="social color-blue glow--hover" href="https://github.com/{github}/" target="_blank" rel="noopener"><Github/></a>
 </div>
 
 <style lang="postcss">
+  @media screen and (--tablet-and-larger) {
+    .email {
+      cursor: pointer;
+    }    
+  }
+  
   .socials-container {    
     display: flex;
     flex-flow: row-reverse nowrap;
