@@ -214,6 +214,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-header);
   font-weight: var(--font-weight-bold);
+  font-weight: 400;
 }
 
 .text-xs {
@@ -259,6 +260,14 @@ h1, h2, h3, h4, h5, h6 {
 .text-5xl {
   font-size: var(--font-size-5xl);
   line-height: var(--line-height-5xl);
+}
+
+.bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.italic {
+  font-style: italic;
 }
 
 .visually-hidden {

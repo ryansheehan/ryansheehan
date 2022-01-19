@@ -13,7 +13,7 @@
 <svelte:head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">  
-  <link href="https://fonts.googleapis.com/css2?family=PT+Serif&family=Signika+Negative:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Signika+Negative:wght@400;700&display=swap" rel="stylesheet">
 </svelte:head>
 
 
