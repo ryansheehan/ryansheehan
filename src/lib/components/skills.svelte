@@ -53,7 +53,7 @@
 
   <div class="skills-container" bind:this={container}>
     {#each filteredSkills as {name, type, link} (name)}
-      <a href="{link}" 
+      <a href="{link}" target="_blank" rel="noopener"
         transition:fade={{duration: 300}}     
         animate:flip={{duration: 300}}
         class="glow skill"
