@@ -6,6 +6,7 @@
   
   export let modal: Modal;
   let bodyElement: HTMLElement | undefined = undefined;
+  let contentWrapper: HTMLElement | undefined = undefined;
   
   const {disableScroll, enableScroll} = (() => {
     let overflowState: string;
@@ -37,19 +38,19 @@
   });
 
   onDestroy(() => {
+    console.log('modal onDestroy')
     enableScroll();
-    unsubscribe()
+    unsubscribe();
   });
 </script>
 
-{#if $modal}
 <Portal target="#modal">
   <div class="backdrop" on:click={modal.close} transition:fade={{duration: 150}}/>
-  <div class="content-wrapper" transition:fade={{duration: 150}}>
+  <div class="content-wrapper" bind:this={contentWrapper}>
     <slot></slot>
   </div>
 </Portal>
-{/if}
+
 
 <style lang="postcss">
   .backdrop, .content-wrapper {

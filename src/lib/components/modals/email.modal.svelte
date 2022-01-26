@@ -1,4 +1,5 @@
 <script lang="ts">  
+  import { onDestroy } from 'svelte';
   import { emailModal } from '$lib/store/modal';
   import { fade } from 'svelte/transition';
   import Modal from './modal.svelte';
@@ -12,8 +13,19 @@
     copied = true;
     return email;
   }
+
+  onDestroy(() => {
+    console.log('email modal onDestroy');
+  })
+
+  $: {
+    if (!$emailModal) {
+      copied = false;
+    }
+  }
 </script>
 
+{#if $emailModal}
 <Modal modal={emailModal}>  
   <CenterCard width="300px" height="300px" onClose={emailModal.close}>
     <div class="copy-container">
@@ -27,6 +39,7 @@
     <span>Contact me at <a class="color-blue glow" href="mailto:{email}">{email}</a></span>
   </CenterCard>
 </Modal>
+{/if}
 
 <style lang="postcss">
   .copy-container {

@@ -1,4 +1,6 @@
 <script lang="ts">
+  import {onDestroy} from 'svelte';
+  import { fade } from 'svelte/transition';
   import CloseIcon from '$lib/icons/close.svelte';
 
   export let width = 'auto';
@@ -14,9 +16,11 @@
     --height:${height};
     --gap:${gap};
   `;
+
+  onDestroy(() => console.log('center-card onDestroy'));
 </script>
 
-<div on:click|stopPropagation {style}>
+<div {style} transition:fade={{duration: 150}}>
   {#if onClose}
     <button on:click={onClose} class="color-orange glow--hover"><CloseIcon width="1.5rem" height="1.5rem"/></button>
   {/if}
