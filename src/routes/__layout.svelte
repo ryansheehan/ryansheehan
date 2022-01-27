@@ -1,7 +1,8 @@
 <script lang="ts">  
   import '../style/global.css';
   import Layout from '$lib/components/layout.svelte';
-  import EmailModal from '$lib/components/modals/email.modal.svelte';
+  import { modal } from '$lib/store/modal';
+  import Modal from '$lib/components/modals/modal.svelte';
 
   import AppBar from '$lib/components/appbar.svelte';
   import Footer from '$lib/components/footer.svelte'; 
@@ -22,7 +23,10 @@
   <slot slot="content"/>
   <Footer slot="footer" {contact}/>
 </Layout>
-<EmailModal email={contact.email} />
+
+{#if $modal.open}
+  <Modal />
+{/if}
 
 <style lang="postcss" global>
   

@@ -1,25 +1,25 @@
 <script lang="ts">
-  import {onMount, onDestroy} from 'svelte'
+  import {onMount, onDestroy, SvelteComponent} from 'svelte'
   import { fade } from 'svelte/transition';
   import Portal from 'svelte-portal/src/Portal.svelte';
-  import type { Modal } from '$lib/store/modal';
-  
-  export let modal: Modal;
-  let bodyElement: HTMLElement | undefined = undefined;
-  let contentWrapper: HTMLElement | undefined = undefined;
+  import { modal } from '$lib/store/modal';
+
+  let bodyElement: HTMLElement | undefined = undefined;  
+
+  $: opened = $modal.open;
   
   const {disableScroll, enableScroll} = (() => {
     let overflowState: string;
 
     return {
       disableScroll: () => {
-        if (bodyElement && $modal) {
+        if (bodyElement && opened) {
           overflowState = bodyElement.style.overflow;
           bodyElement.style.overflow = 'hidden';
         }
       },
       enableScroll: () => {
-        if (bodyElement && !$modal) {
+        if (bodyElement && !opened) {
           bodyElement.style.overflow = overflowState;
           overflowState = undefined;
         }
@@ -29,8 +29,8 @@
 
   onMount(() => bodyElement = document?.body);
   
-  const unsubscribe = modal.subscribe(isOpen => {    
-    if (isOpen) {
+  const unsubscribe = modal.subscribe(({open}) => {    
+    if (open) {
       disableScroll();
     } else {
       enableScroll();
@@ -45,8 +45,8 @@
 
 <Portal target="#modal">
   <div class="backdrop" on:click={modal.close} transition:fade={{duration: 150}}/>
-  <div class="content-wrapper" bind:this={contentWrapper}>
-    <slot></slot>
+  <div class="content-wrapper">    
+    <svelte:component this={$modal.component} {...$modal.data} />
   </div>
 </Portal>
 
