@@ -37,8 +37,7 @@
     }
   });
 
-  onDestroy(() => {
-    console.log('modal onDestroy')
+  onDestroy(() => {    
     enableScroll();
     unsubscribe();
   });

@@ -1,5 +1,4 @@
 <script lang="ts">  
-  import { onDestroy } from 'svelte';
   import { emailModal } from '$lib/store/modal';
   import { fade } from 'svelte/transition';
   import Modal from './modal.svelte';
@@ -12,11 +11,7 @@
   const copyEmail = () => {
     copied = true;
     return email;
-  }
-
-  onDestroy(() => {
-    console.log('email modal onDestroy');
-  })
+  }  
 
   $: {
     if (!$emailModal) {

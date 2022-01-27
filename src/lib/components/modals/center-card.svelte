@@ -1,5 +1,4 @@
 <script lang="ts">
-  import {onDestroy} from 'svelte';
   import { fade } from 'svelte/transition';
   import CloseIcon from '$lib/icons/close.svelte';
 
@@ -16,8 +15,6 @@
     --height:${height};
     --gap:${gap};
   `;
-
-  onDestroy(() => console.log('center-card onDestroy'));
 </script>
 
 <div {style} transition:fade={{duration: 150}}>
