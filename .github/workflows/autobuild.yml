@@ -17,8 +17,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - name: Deploy
-        if: ${{ github.event_name == 'release' && github.event.action == 'published' }}
-        # https://github.com/marketplace/actions/deploy-to-github-pages
+        if: ${{ github.event_name == 'release' && github.event.action == 'published' }}        
         # https://github.com/JamesIves/github-pages-deploy-action
         uses: JamesIves/github-pages-deploy-action@v4.2.2
         with:
