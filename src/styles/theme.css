@@ -1,0 +1,36 @@
+:root {
+    --clr-background: var(--grayscale-100);
+    --clr-text: var(--grayscale-950);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-background: var(--grayscale-950);
+        --clr-text: var(--grayscale-100);
+    }
+}
+
+/* dark mode user-agent-styles */
+html {
+    color-scheme: dark light;   
+    /* color-scheme: light dark;    */
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+
+    --clr-background: var(--grayscale-100);
+    --clr-text: var(--grayscale-950);
+}
+
+[data-theme="dark"] {
+    color-scheme: dark;
+
+    --clr-background: var(--grayscale-950);
+    --clr-text: var(--grayscale-100);
+}
+
+body {
+    background-color: var(--clr-background);
+    color: var(--clr-text);
+}
