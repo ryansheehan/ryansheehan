@@ -1,44 +1,17 @@
-import adapter from '@sveltejs/adapter-static';
-import preprocess from 'svelte-preprocess';
-import autoprefixer from 'autoprefixer';
-import presetEnv from 'postcss-preset-env';
-
-const dev = process.env.NODE_ENV === 'development';
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
+	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	preprocess: preprocess({
-    globalStyle: true,
-    sourceMap: true,
-    postcss: {      
-      plugins: [                
-        autoprefixer(),
-        presetEnv({          
-          features: {
-            'nesting-rules': true,
-            'custom-properties': true,
-            'gap-properties': true,
-            'not-pseudo-class': true,
-            'custom-media-queries': {
-              importFrom: 'src/style/queries.pcss',
-            },
-          },
-        }),
-      ],
-    },
-  }),
+	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter({
-      base: dev ? '' : '',
-    }),
-
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte',
-
-    appDir: 'internal',
+		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
+		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
+		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
+		adapter: adapter()
 	}
 };
 
