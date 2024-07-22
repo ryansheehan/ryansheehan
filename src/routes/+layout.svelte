@@ -7,3 +7,9 @@
 <main>    
     {@render children()}
 </main>
+
+<style>
+    main {        
+        min-height: 100svh;
+    }
+</style>

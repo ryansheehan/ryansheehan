@@ -1,15 +1,157 @@
-/* https://modernfontstacks.com/ */
-
 :root {
-    --font-sans: system-ui, sans-serif;
-    --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
-    --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+    /* https://modernfontstacks.com/ */
+    --font-system-ui: system-ui, sans-serif;
+    --font-transitional: Charter, Bitstream Charter, Sitka Text, Cambria, serif;
+    --font-monospace-code: Dank Mono,Operator Mono,Inconsolata,Fira Mono,ui-monospace,SF Mono,Monaco,Droid Sans Mono,Source Code Pro,Cascadia Code,Menlo,Consolas,DejaVu Sans Mono,monospace;
+
+    --font-sans: var(--font-system-ui);
+    --font-serif: var(--font-transitional);
+    --font-mono: var(--font-monospace-code);
+
+    --font-weight-1: 100;
+    --font-weight-2: 200;
+    --font-weight-3: 300;
+    --font-weight-4: 400;
+    --font-weight-5: 500;
+    --font-weight-6: 600;
+    --font-weight-7: 700;
+    --font-weight-8: 800;
+    --font-weight-9: 900;
+
+    --font-letterspacing-0: -.05em;
+    --font-letterspacing-1: .025em;
+    --font-letterspacing-2: .050em;
+    --font-letterspacing-3: .075em;
+    --font-letterspacing-4: .150em;
+    --font-letterspacing-5: .500em;
+    --font-letterspacing-6: .750em;
+    --font-letterspacing-7: 1em;
+
+    --scale-0500: 0.5;
+    --scale-0750: 0.75;
+    --scale-1000: 1;
+    --scale-1125: 1.125;
+    --scale-1250: 1.25;
+    --scale-1375: 1.375;
+    --scale-1500: 1.5; 
+    --scale-1750: 1.75;
+    --scale-2000: 2;
+    --scale-2500: 2.5;
+    --scale-3000: 3;
+    --scale-3500: 3.5;
+    --scale-4000: 4;
+    --scale-5000: 5;
+    --scale-6000: 6;
+
+    --font-scale-base: var(--scale-1125);
+    --rhythm-scale: var(--scale-1500);
+
+    --font-scale-00: calc(var(--font-scale-base) * var(--scale-0500));
+    --font-scale-0: calc(var(--font-scale-base) * var(--scale-0750));
+    --font-scale-1: calc(var(--font-scale-base) * var(--scale-1000));
+    --font-scale-2: calc(var(--font-scale-base) * var(--scale-1125));
+    --font-scale-3: calc(var(--font-scale-base) * var(--scale-1250));
+    --font-scale-4: calc(var(--font-scale-base) * var(--scale-1500));
+    --font-scale-5: calc(var(--font-scale-base) * var(--scale-2000));
+    --font-scale-6: calc(var(--font-scale-base) * var(--scale-2500));
+    --font-scale-7: calc(var(--font-scale-base) * var(--scale-3000));
+    --font-scale-8: calc(var(--font-scale-base) * var(--scale-3500));
+    --font-scale-9: calc(var(--font-scale-base) * var(--scale-4000));
+    --font-scale-10: calc(var(--font-scale-base) * var(--scale-5000));
+    --font-scale-11: calc(var(--font-scale-base) * var(--scale-6000));
+
+    --font-size-00: calc(var(--font-scale-00) * 1rem);
+    --font-size-0: calc(var(--font-scale-0) * 1rem);
+    --font-size-1: calc(var(--font-scale-1) * 1rem);
+    --font-size-2: calc(var(--font-scale-2) * 1rem);
+    --font-size-3: calc(var(--font-scale-3) * 1rem);
+    --font-size-4: calc(var(--font-scale-4) * 1rem);
+    --font-size-5: calc(var(--font-scale-5) * 1rem);
+    --font-size-6: calc(var(--font-scale-6) * 1rem);
+    --font-size-7: calc(var(--font-scale-7) * 1rem);
+    --font-size-8: calc(var(--font-scale-8) * 1rem);
+    --font-size-9: calc(var(--font-scale-9) * 1rem);
+    --font-size-10: calc(var(--font-scale-10) * 1rem);
+    --font-size-11: calc(var(--font-scale-11) * 1rem);
+
+    --line-height-00: calc((round(up, var(--scale-0500)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-00));
+    --line-height-0: calc((round(up, var(--scale-0750)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-0));
+    --line-height-1: calc((round(up, var(--scale-1000)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-1));
+    --line-height-2: calc((round(up, var(--scale-1125)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-2));
+    --line-height-3: calc((round(up, var(--scale-1250)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-3));
+    --line-height-4: calc((round(up, var(--scale-1500)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-4));    
+    --line-height-5: calc((round(up, var(--scale-2000)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-5));
+    --line-height-6: calc((round(up, var(--scale-2500)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-6));
+    --line-height-7: calc((round(up, var(--scale-3000)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-7));
+    --line-height-8: calc((round(up, var(--scale-3500)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-8));
+    --line-height-9: calc((round(up, var(--scale-4000)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-9));
+    --line-height-10: calc((round(up, var(--scale-5000)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-10));
+    --line-height-11: calc((round(up, var(--scale-6000)) * var(--rhythm-scale)) * var(--font-scale-base) / var(--font-scale-11));
+
+    --font-size-fluid-0: clamp(var(--font-size-0), 2vw, var(--font-size-1));
+    --font-size-fluid-1: clamp(var(--font-size-1), 4vw, var(--font-size-4));
+    --font-size-fluid-2: clamp(var(--font-size-4), 6vw, var(--font-size-6));
+    --font-size-fluid-3: clamp(var(--font-size-5), 9vw, var(--font-size-8));
+
+    --rhythm-unit: calc(var(--rhythm-scale) * var(--font-scale-base) * 1rem);
+    
+    --spacing-block-1: var(--rhythm-unit);
+    --spacing-block-2: calc(var(--rhythm-unit) * 2);
+    --spacing-block-3: calc(var(--rhythm-unit) * 3);
 }
 
 body {
     font-family: var(--font-sans);
-    font-weight: 400;
-    line-height: 1.5;
+    font-weight: var(--font-weight-4);
+
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
 }
 
+/* Improved heading in supported browsers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: var(--font-size-1);
+    line-height: var(--line-height-1);
+    text-wrap: balance;
+    
+    max-inline-size: var(--size-header-1);
+}
 
+/* improve readability with max-width on paragraphs and lists */
+/* prevent orphans in supported browsers */
+p,
+li {
+    max-width: var(--p-max-width, var(--size-content-3));
+    text-wrap: pretty;    
+}
+
+:where(p, li):not(:last-child) {
+    padding-block-end: var(--spacing-block-1);     
+}
+
+h1 {
+    font-weight: var(--font-weight-7);    
+    font-size: var(--font-size-6);
+    line-height: var(--line-height-6);  
+    border-bottom: var(--size-0) solid var(--grayscale-400);
+
+    max-inline-size: var(--size-header-2);
+    margin-block-end: calc(var(--spacing-block-1) - var(--size-0));
+}
+
+h2 {
+    font-size: var(--font-size-5);
+    line-height: var(--line-height-5);
+    font-weight: var(--font-weight-7);
+
+    padding-block-end: var(--spacing-block-1);
+}
+
+:where(section):not(:last-child) {
+    padding-block-end: var(--spacing-block-2);
+}
