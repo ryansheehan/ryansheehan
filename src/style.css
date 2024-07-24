@@ -1,6 +1,10 @@
-@import "./styles/media.css";
-@import "./styles/colors.css";
-@import "./styles/sizes.css";
-@import "./styles/reset.css";
-@import "./styles/theme.css";
-@import "./styles/typography.css";
+@import "./styles/base/media.css";
+@import "./styles/base/colors.css";
+@import "./styles/base/sizes.css";
+@import "./styles/base/reset.css";
+@import "./styles/base/theme.css";
+@import "./styles/base/typography.css";
+@import "./styles/base/visually-hidden.css";
+
+@import "./styles/app/default.css";
+@import "./styles/app/layout.css";

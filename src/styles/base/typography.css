@@ -130,28 +130,3 @@ li {
     text-wrap: pretty;    
 }
 
-:where(p, li):not(:last-child) {
-    padding-block-end: var(--spacing-block-1);     
-}
-
-h1 {
-    font-weight: var(--font-weight-7);    
-    font-size: var(--font-size-6);
-    line-height: var(--line-height-6);  
-    border-bottom: var(--size-0) solid var(--grayscale-400);
-
-    max-inline-size: var(--size-header-2);
-    margin-block-end: calc(var(--spacing-block-1) - var(--size-0));
-}
-
-h2 {
-    font-size: var(--font-size-5);
-    line-height: var(--line-height-5);
-    font-weight: var(--font-weight-7);
-
-    padding-block-end: var(--spacing-block-1);
-}
-
-:where(section):not(:last-child) {
-    padding-block-end: var(--spacing-block-2);
-}

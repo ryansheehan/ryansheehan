@@ -3,10 +3,20 @@
     --clr-text: var(--grayscale-950);
 }
 
+.invert-colors {
+    --clr-background: var(--grayscale-950);
+    --clr-text: var(--grayscale-100);
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --clr-background: var(--grayscale-950);
         --clr-text: var(--grayscale-100);
+    }
+
+    .invert-colors {
+        --clr-background: var(--grayscale-100);
+        --clr-text: var(--grayscale-950);
     }
 }
 
