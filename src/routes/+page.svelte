@@ -1,15 +1,30 @@
 <script lang="ts">
-    import Marker from '../lib/timeline/marker.svelte';
+    import Hero from '$lib/components/hero.svelte';
+    import WorkTimeline from '$lib/components/work-timeline.svelte';
+    // import {onMount} from 'svelte';
+    // import Worker from '$lib/worker?worker';
+
+    // onMount(() => {
+    //     console.log('Worker created');
+    //     const worker = new Worker();
+    //     worker.addEventListener('message', ({data}: MessageEvent<{result: number}>) => {
+    //         console.log('Worker replied: ', data.result);
+    //     });
+    //     console.log('Sending message to worker');
+    //     worker.postMessage({n: 8});
+    // });
 </script>
 
 <article class="content-grid">
-    <h1>Home</h1>
-    <Marker />
+    <Hero/>    
+    <div class="timeline-wrapper">
+        <WorkTimeline/>
+    </div>
 </article>
 
 <style>
-    h1 {
-        padding-bottom: var(--spacing-block-1);
+    .timeline-wrapper {
+        justify-self: end;
     }
 </style>
 

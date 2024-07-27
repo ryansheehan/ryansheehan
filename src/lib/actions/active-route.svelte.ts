@@ -5,7 +5,9 @@ export const activeRoute: Action<HTMLAnchorElement> = (node) => {
     const {pathname: nodePath} = new URL(node.href);        
     const unsubscribe = page.subscribe(({url}) => {
         const {pathname: activePath} = url;        
-        node.classList.toggle('active', nodePath === activePath);
+        const selected = nodePath === activePath;
+        node.classList.toggle('active', selected);
+        node.setAttribute('aria-selected', selected.toString());
     });    
 
     return {
