@@ -2,10 +2,8 @@
     import {onMount, onDestroy} from 'svelte';    
     import {
         maxWorkers,
-        particleCount, 
         stride, byteStride, 
-        renderingStride, 
-        particlesState, 
+        renderingStride,         
         sharedVariables,
         setWidthHeight,
         buildRenderingBuffers,
@@ -15,7 +13,9 @@
 	 	setBackBuffer,
 		setDeltaTime, 
         setConstants,
-        buildSharedViews,       
+        buildSharedViews,    
+        buildBlockAlignedBuffer,
+		initializeParticlesState,   
     } from './particle.constants';
     import ParticleWorker from './particles.worker?worker';
 
@@ -23,9 +23,7 @@
         sharedUint8ArrayView,
         sharedUint16ArrayView,
         sharedFloat64ArrayView,
-    ] = buildSharedViews(sharedVariables);
-
-    const particlesView = new Float32Array(particlesState);
+    ] = buildSharedViews(sharedVariables);    
 
     // initialize fixed constants for shared memory
     setConstants(stride, byteStride, renderingStride, sharedUint8ArrayView);
@@ -43,7 +41,10 @@
     
     let activeWorkers = 0;
     let workers: Worker[]; 
-    const particleBlockSize = particleCount / maxWorkers;
+    let particlesCount: number;
+    let particlesBuffer: SharedArrayBuffer;    
+    let particlesView:Float32Array;
+    let particleBlockSize: number;
 
     function workerResponseHandler({data}: MessageEvent<ParticleWorkerResponseData>) {
         const {id} = data;
@@ -78,7 +79,7 @@
                         particleCount: particleBlockSize,
                         particleOffset: id * particleBlockSize,
                         sharedVariables,
-                        particlesState,
+                        particlesBuffer,
                         renderingBuffers,
                     };
                     workers[id].postMessage(frameData);
@@ -110,7 +111,7 @@
         });
         resizeObserver.observe(parentElement);
 
-        initRenderingBuffers(width, height);
+        initWorld(width, height);
 
         workers = Array.from({length: maxWorkers}, () => new ParticleWorker());
         workers.forEach(worker => worker.addEventListener('message', workerResponseHandler));
@@ -131,30 +132,26 @@
         cleanUp();
     })
 
-    function resetParticlesState(w: number, h: number) {
-        for (let i = 0; i < particleCount; i++) {
-            particlesView[i * stride + 0] = Math.random() * width; // x
-            particlesView[i * stride + 1] = Math.random() * height; // y
-            particlesView[i * stride + 2] = (Math.random() * 2 - 1) * 10; // dx
-            particlesView[i * stride + 3] = (Math.random() * 2 - 1) * 10; // dy
-        }
-    }
-
-    function initRenderingBuffers(w: number, h: number) {
+    function initWorld(w: number, h: number) {
         renderingBuffers = buildRenderingBuffers(w, h);
         renderingBufferViews = [new Uint8ClampedArray(renderingBuffers[0]), new Uint8ClampedArray(renderingBuffers[1])];
         imageData = new ImageData(w, h);
         setWidthHeight(w, h, sharedUint16ArrayView);
 
         // the world size has changed, so we should reset the particles state as well
-        resetParticlesState(w, h);
+        const {count, buffer} = buildBlockAlignedBuffer(w, h, 0.25);
+        particlesCount = count;
+        particleBlockSize = count / maxWorkers;
+        particlesBuffer = buffer;
+        particlesView = new Float32Array(particlesBuffer);
+        initializeParticlesState(particlesView, w, h, 10);
     }
 
     $effect(() => {
         canvas!.width = width;
         canvas!.height = height;
 
-        initRenderingBuffers(width, height);                
+        initWorld(width, height);                
     });
   
 </script>

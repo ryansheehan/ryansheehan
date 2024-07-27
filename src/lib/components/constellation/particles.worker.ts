@@ -11,7 +11,7 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         particleCount,
         particleOffset,
         sharedVariables,
-        particlesState,
+        particlesBuffer,
         renderingBuffers,
     } = data;
 
@@ -26,7 +26,7 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
 
     const {backBuffer, stride, byteStride, width, height, dt} = parseSharedVariables(sharedUint8ArrayView, sharedUint16ArrayView, sharedFloat64ArrayView);
     
-    const particlesView = new Float32Array(particlesState, particleOffset * byteStride, particleCount * stride);
+    const particlesView = new Float32Array(particlesBuffer, particleOffset * byteStride, particleCount * stride);
     const renderingView = new Uint8Array(renderingBuffers[backBuffer]);
 
     // update particles

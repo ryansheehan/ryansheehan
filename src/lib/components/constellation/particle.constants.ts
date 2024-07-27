@@ -1,9 +1,30 @@
 export const maxWorkers = 4;
-export const particleCount = 100_000;
 export const stride = 4; // 4 floats x,y,dx,dy
 export const byteStride = stride * 4; // 4 bytes per float
 export const renderingStride = 4; // 4 bytes per pixel (r,g,b,a)
-export const particlesState = new SharedArrayBuffer(particleCount * byteStride);
+
+// export const particleCount = 100_000;
+// export const particlesState = new SharedArrayBuffer(particleCount * byteStride);
+
+// initialize the particle memory block with random positions and velocities
+// returns the FLoat32Array view of the shared memory
+export function initializeParticlesState(particles: Float32Array, w: number, h: number, speed = 10) {    
+    for (let i = 0;  i < particles.length; i++) {
+        particles[i * stride + 0] = Math.random() * w;
+        particles[i * stride + 1] = Math.random() * h;
+        particles[i * stride + 2] = (Math.random() * 2 - 1) * speed;
+        particles[i * stride + 3] = (Math.random() * 2 - 1) * speed;
+    }
+    return particles;
+}
+
+// generate a shared buffer aligned by the memStride and blockSize 
+// to ensure the buffer can be evenly divided by the blockSize 
+export function buildBlockAlignedBuffer(w: number, h: number, percent: number, blockSize = maxWorkers, memStride = byteStride) {
+    const count = ((w * h * percent / blockSize) | 0) * blockSize;
+    const buffer = new SharedArrayBuffer(count * memStride);
+    return { count, buffer };
+}
 
 // shared variables:
 export const sharedVariables = new SharedArrayBuffer(
@@ -29,7 +50,7 @@ export interface ParticleWorkerData {
     particleCount: number;
     particleOffset: number;
     sharedVariables: SharedArrayBuffer;
-    particlesState: SharedArrayBuffer;
+    particlesBuffer: SharedArrayBuffer;
     renderingBuffers: [SharedArrayBuffer, SharedArrayBuffer];
 }
 
