@@ -38,7 +38,7 @@ export interface ParticleWorkerResponseData {
 }
 
 
-export function parseSharedVariables(vars: SharedArrayBuffer, uint8View: Uint8Array, uint16View: Uint16Array, float64View: Float64Array) {
+export function parseSharedVariables(uint8View: Uint8Array, uint16View: Uint16Array, float64View: Float64Array) {
     const [backBuffer, stride, byteStride, renderingStride] = uint8View;
     const [width, height] = uint16View;
     const [dt] = float64View;

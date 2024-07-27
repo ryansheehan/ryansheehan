@@ -24,7 +24,7 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         hasNoSharedViews = false;
     }
 
-    const {backBuffer, stride, byteStride, width, height, dt} = parseSharedVariables(sharedVariables, sharedUint8ArrayView, sharedUint16ArrayView, sharedFloat64ArrayView);
+    const {backBuffer, stride, byteStride, width, height, dt} = parseSharedVariables(sharedUint8ArrayView, sharedUint16ArrayView, sharedFloat64ArrayView);
     
     const particlesView = new Float32Array(particlesState, particleOffset * byteStride, particleCount * stride);
     const renderingView = new Uint8Array(renderingBuffers[backBuffer]);
@@ -43,11 +43,6 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         }
     }
 
-    // todo: this run in a multithreaded space, which means there is a
-    // a chance that multiple threads can write to the same pixel at the same time.
-    // this can be solved with a mutex or a lock on a per pixel, however with the
-    // current simulation, if this happens, it won't be noticible.
-
     // draw particles
     for (let i = 0; i < particleCount; i++) {
         const x = particlesView[i * stride + 0];
@@ -58,10 +53,12 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         const rx = x / width;
         const ry = y / height;
 
-        Atomics.add(renderingView, index, 25 + 50 * rx);
-        Atomics.add(renderingView, index + 1, 25 + 50 * ry);
-        Atomics.add(renderingView, index + 2, 25 + 50 * (1-rx));
-        Atomics.store(renderingView, index + 3, 255);
+        Atomics.add(renderingView, index    , 25 + 50 * rx);        // red
+        Atomics.add(renderingView, index + 1, 25 + 50 * ry);        // green
+        Atomics.add(renderingView, index + 2, 25 + 50 * (1-rx));    // blue
+
+        Atomics.store(renderingView, index + 3, 255);              // alpha
+
         // renderingView[index    ] += 25 + 50 * rx; // red
         // renderingView[index + 1] += 25 + 50 * ry; // green
         // renderingView[index + 2] += 25 + 50 * (1-rx); // blue
