@@ -50,7 +50,6 @@
         activeWorkers--;
     }
 
-    let frame = 0;
     let animFrameHandle = -1;
     function startSimulation() {        
         let lastTime: DOMHighResTimeStamp;
