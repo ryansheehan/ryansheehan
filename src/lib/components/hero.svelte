@@ -9,7 +9,7 @@
 <section class="full-width">
     <Constellation bind:this={constellation} />
     <div class="header-text-container isolate no-pointer-events no-select">        
-        <ScrollTitle class="cta-title" lede="I build" words={['software', 'teams', 'experiences']} delay={5000} />
+        <ScrollTitle class="cta-title" lede="I build" words={['software', 'teams', 'experiences']} />
         <button class="reset-button has-pointer-events" onclick={() => constellation?.reset()}>Reset</button>
     </div>
 </section>
@@ -24,6 +24,18 @@
         position: relative;
         height: 600px;
         width: 100%;        
+    }
+
+    @media (--landscape) {
+        section {
+            height: 230px;
+        }
+    }   
+    
+    @media (--landscape) and (--xl-n-below) {
+        section {
+            height: 550px;
+        }
     }
 
     .no-pointer-events {

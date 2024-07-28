@@ -183,8 +183,9 @@
         }
     }
 
-    function touchStart(e: TouchEvent) {        
-        // e.preventDefault();        
+    function touchStart({touches}: TouchEvent) {        
+        const {clientX, clientY} = touches[0];
+        calculatePosition(clientX, clientY);              
         setPointerDown(true, sharedUint8ArrayView);
     }
 
@@ -192,9 +193,8 @@
         setPointerDown(false, sharedUint8ArrayView);
     }
 
-    function touchMove(e: TouchEvent) {      
-        // e.preventDefault(); 
-        const {clientX, clientY} = e.touches[0];
+    function touchMove({touches}: TouchEvent) {              
+        const {clientX, clientY} = touches[0];
         calculatePosition(clientX, clientY);
     }
 

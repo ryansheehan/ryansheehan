@@ -17,7 +17,7 @@
                     <li><a href="/about" use:activeRoute>About</a></li>
                 </ul>
             </nav> -->
-            <nav aria-label="social media links">
+            <nav data-link-type="socials" aria-label="social media links">
                 <ul>
                     <li>
                         <a href="https://github.com/ryansheehan/">
@@ -79,7 +79,7 @@
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
         font-weight: var(--font-weight-6);
-        letter-spacing: var(--font-letterspacing-3);
+        letter-spacing: var(--font-letterspacing-3);                
     }
 
     nav ul {
@@ -92,6 +92,8 @@
         }
     }
 
-
+    :global([data-link-type="socials"] svg:hover) {
+        margin-block-start: var(--size-00);        
+    }    
 </style>
 

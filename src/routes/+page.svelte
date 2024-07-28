@@ -17,15 +17,11 @@
 
 <article class="content-grid">
     <Hero/>    
-    <div class="timeline-wrapper">
-        <WorkTimeline/>
-    </div>
+    <WorkTimeline/>
 </article>
 
 <style>
-    .timeline-wrapper {
-        justify-self: end;
-    }
+    
 </style>
 
 

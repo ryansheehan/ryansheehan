@@ -1,35 +1,36 @@
 <script lang="ts">
     import type {Snippet} from 'svelte';
 
-    interface Props {
-        active?: boolean;
+    interface Props {   
+        active?: boolean;     
         year: string;    
         children?: Snippet<[]>;    
     }
 
-    let {active = false, year, children}: Props = $props();
+    let {active=false, year, children}: Props = $props();
 
 </script>
 
 <div class="marker-container">
+    <div class="year">{year}</div>
+    <div class="line"></div>
+    <div class="marker" data-id={year} data-active={active}></div>
     <section class="description-container">
         {@render children?.()}
     </section>
-    <div class="marker" data-active={active}></div>
-    <div class="year">{year}</div>
 </div>
 
 
 <style>
     .description-container {
-        grid-column: description;
-        padding-block-start: var(--size);
-        padding-inline-end: var(--size-2);
+        grid-column: description;        
+        padding-inline-start: var(--size-4);
     }
 
     .marker-container {
         display: grid;
         grid-template-columns: subgrid;
+        position: relative;
     }
 
     .marker {        
@@ -48,13 +49,27 @@
         position: relative;
     }
 
+    .line {
+        position: absolute;
+        top: var(--half-size);
+        left: calc(var(--half-size) - var(--half-border-size));
+        grid-column: marker;
+        grid-row: 1;
+        height: 100%;
+        border-right: var(--color) solid var(--border-size);
+    }   
+    
+    .marker-container:last-of-type .line {
+        height: calc(100% - var(--half-size));
+    }
+
     .year {
         grid-column: year;
         padding-block-start: calc(var(--half-size) - (var(--spacing-block-1) * 0.5));
-        padding-inline-start: var(--size-relative-3);
+        padding-inline-end: var(--size-relative-3);
     }
 
-    [data-active="true"]::before {        
+    .marker[data-active="true"]::before {        
         --ping-offset: calc(var(--border-size) * -1);
 
         content: '';
