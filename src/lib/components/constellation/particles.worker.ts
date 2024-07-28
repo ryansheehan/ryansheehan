@@ -29,20 +29,6 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
     const particlesView = new Float32Array(particlesBuffer, particleOffset * byteStride, particleCount * stride);
     const renderingView = new Uint8Array(renderingBuffers[backBuffer]);
 
-    // update particles
-    // for(let i = 0; i < particleCount; i++) {
-    //     particlesView[i * stride + 0] += particlesView[i * stride + 2] * dt;
-    //     particlesView[i * stride + 1] += particlesView[i * stride + 3] * dt;
-
-    //     // bounce particles off the walls
-    //     if (particlesView[i * stride + 0] < 0 || particlesView[i * stride + 0] >= width) {
-    //         particlesView[i * stride + 2] *= -1;
-    //     }
-    //     if (particlesView[i * stride + 1] < 0 || particlesView[i * stride + 1] >= height) {
-    //         particlesView[i * stride + 3] *= -1;
-    //     }
-    // }
-
     let x, xi, y, yi, vx, vxi, vy, vyi, gravDx, gravDy, dist, force: number;
 
     // update particles
@@ -68,20 +54,10 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
             gravDy *= force / dist;
         }
 
-        // particlesView[i * stride + 0] += particlesView[i * stride + 2] * dt;
-        // particlesView[i * stride + 1] += particlesView[i * stride + 3] * dt;
         particlesView[xi] = x + gravDx * dt;
         particlesView[yi] = y + gravDy * dt;
         particlesView[vxi] = gravDx;
         particlesView[vyi] = gravDy;
-
-        // bounce particles off the walls
-        // if (particlesView[i * stride + 0] < 0 || particlesView[i * stride + 0] >= width) {
-        //     particlesView[i * stride + 2] *= -1;
-        // }
-        // if (particlesView[i * stride + 1] < 0 || particlesView[i * stride + 1] >= height) {
-        //     particlesView[i * stride + 3] *= -1;
-        // }
     }
 
     // draw particles
@@ -98,21 +74,21 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         Atomics.store(
             renderingView,
             index,
-            Math.min(255, Math.round((Atomics.load(renderingView, index)) + 25 + (50 * rx)))
+            Math.min(255, (Atomics.load(renderingView, index) + 25 + (50 * rx)))
         );
 
         // green
         Atomics.store(
             renderingView,
             index + 1,
-            Math.min(255, Math.round((Atomics.load(renderingView, index + 1)) + 25 + (50 * ry)))
+            Math.min(255, (Atomics.load(renderingView, index + 1) + 25 + (50 * ry)))
         );
 
         // blue
         Atomics.store(
             renderingView,
             index + 2,
-            Math.min(255, Math.round((Atomics.load(renderingView, index + 2)) + 25 + (50 * (1-rx))))
+            Math.min(255, (Atomics.load(renderingView, index + 2) + 25 + (50 * (1-rx))))
         );
 
         // alpha  
