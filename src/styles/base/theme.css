@@ -1,11 +1,13 @@
 :root {
     --clr-background: var(--grayscale-100);
+    --clr-background-alt: var(--surface-300);
     --clr-text: var(--grayscale-950);
     --clr-primary: var(--primary-800);
 }
 
 .invert-colors {
     --clr-background: var(--grayscale-950);
+    --clr-background-alt: var(--surface-800);
     --clr-text: var(--grayscale-100);
     --clr-primary: var(--primary-300);
 }
@@ -13,12 +15,14 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --clr-background: var(--grayscale-950);
+        --clr-background-alt: var(--surface-800);
         --clr-text: var(--grayscale-100);
         --clr-primary: var(--primary-300);
     }
 
     .invert-colors {
         --clr-background: var(--grayscale-100);
+        --clr-background-alt: var(--surface-300);
         --clr-text: var(--grayscale-950);
         --clr-primary: var(--primary-800);
     }
@@ -34,14 +38,18 @@ html {
     color-scheme: light;
 
     --clr-background: var(--grayscale-100);
+    --clr-background-alt: var(--surface-300);
     --clr-text: var(--grayscale-950);
+    --clr-primary: var(--primary-800);
 }
 
 [data-theme="dark"] {
     color-scheme: dark;
 
     --clr-background: var(--grayscale-950);
+    --clr-background-alt: var(--surface-800);
     --clr-text: var(--grayscale-100);
+    --clr-primary: var(--primary-300);
 }
 
 body {

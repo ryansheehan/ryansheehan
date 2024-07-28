@@ -22,22 +22,16 @@
 
     section {        
         position: relative;
-        height: 600px;
+        height: 600px;        
         width: 100%;        
     }
 
-    @media (--landscape) {
+    @media (max-height: 500px) {
         section {
-            height: 230px;
-        }
-    }   
-    
-    @media (--landscape) and (--xl-n-below) {
-        section {
-            height: 550px;
+            height: 250px;
         }
     }
-
+    
     .no-pointer-events {
         pointer-events: none;
     }

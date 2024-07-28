@@ -5,6 +5,8 @@
     // import {activeRoute} from '../lib/actions/active-route.svelte';
 
     let {children} = $props();
+
+    const currentYear = new Date().getFullYear();
 </script>
 
 <main>    
@@ -36,6 +38,11 @@
         </div>
     </header>
     {@render children()}
+    <footer class="content-grid">
+        <div class="footer__layout">
+            <p>&copy; {currentYear} Ryan Sheehan <span>All rights reserved.</span></p>
+        </div>
+    </footer>
 </main>
 
 <style>
@@ -47,11 +54,11 @@
         position: relative;        
     }
 
-    header {
+    header {        
         align-items: baseline;
 
-        padding-block-start: var(--spacing-block-1);
-        margin-bottom: var(--spacing-block-1);    
+        padding-block: var(--spacing-block-1);
+        /* margin-bottom: var(--spacing-block-1);     */
     }
 
     :global(.social-icon) {
@@ -94,6 +101,20 @@
 
     :global([data-link-type="socials"] svg:hover) {
         margin-block-start: var(--size-00);        
-    }    
+    }   
+    
+    footer {
+        margin-block-start: var(--spacing-block-2);
+        min-height: var(--spacing-block-3);        
+
+        background-color: var(--clr-background-alt);
+        display: grid;
+        place-items: center;
+
+        & p {
+            font-size: var(--font-size-0);
+            line-height: var(--line-height-0);
+        }
+    }
 </style>
 
