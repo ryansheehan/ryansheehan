@@ -107,7 +107,7 @@
         margin-block-start: var(--spacing-block-2);
         min-height: var(--spacing-block-3);        
 
-        background-color: var(--clr-background-alt);
+        /* background-color: var(--clr-background-alt); */
         display: grid;
         place-items: center;
 
