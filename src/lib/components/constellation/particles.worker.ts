@@ -98,21 +98,21 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         Atomics.store(
             renderingView,
             index,
-            Math.min(255, Atomics.load(renderingView, index) + 25 + 50 * rx)
+            Math.min(255, Math.round((Atomics.load(renderingView, index)) + 25 + (50 * rx)))
         );
 
         // green
         Atomics.store(
             renderingView,
             index + 1,
-            Math.min(255, Atomics.load(renderingView, index + 1) + 25 + 50 * ry)
+            Math.min(255, Math.round((Atomics.load(renderingView, index + 1)) + 25 + (50 * ry)))
         );
 
         // blue
         Atomics.store(
             renderingView,
             index + 2,
-            Math.min(255, Atomics.load(renderingView, index + 2) + 25 + 50 * (1-rx))
+            Math.min(255, Math.round((Atomics.load(renderingView, index + 2)) + 25 + (50 * (1-rx))))
         );
 
         // alpha  

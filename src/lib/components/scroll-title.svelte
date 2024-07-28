@@ -79,7 +79,7 @@
         grid-row: 1 / span 1;            
         /* font-style: italic;     */   
         display: inline-grid;
-        grid-template-columns: .4fr .6fr;
+        grid-template-columns: 1fr 1fr;
         gap: var(--size-relative-2);
         align-items: baseline;
     }

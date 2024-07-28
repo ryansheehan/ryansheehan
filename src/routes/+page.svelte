@@ -16,8 +16,8 @@
 </script>
 
 <article class="content-grid">
-    <Hero/>    
-    <WorkTimeline/>
+    <Hero skipTarget="#work-timeline"/>    
+    <WorkTimeline id="work-timeline"/>
 </article>
 
 <style>

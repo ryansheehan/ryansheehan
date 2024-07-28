@@ -2,10 +2,15 @@
     import Marker from './timeline/marker.svelte';
     import Timeline from './timeline/timeline.svelte';
 
-    const currentYear = (new Date()).getFullYear().toString();
+    import type {HTMLAttributes} from 'svelte/elements';
+
+    interface Props extends HTMLAttributes<HTMLElement> {
+
+    }
+    const {...attrs}: Props = $props();
 </script>
 
-<section>
+<section {...attrs}>
     <h2>Professional Timeline</h2>
     <Timeline class="work-timeline">
         <Marker year="2024">
@@ -72,6 +77,7 @@
 
     section {
         padding-block-start: var(--spacing-block-2);
+        scroll-margin-top: var(--spacing-block-3);
     }
 
     h2 {

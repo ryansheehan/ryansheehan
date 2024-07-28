@@ -3,7 +3,18 @@
     // import WordCycle from './word-cycle.svelte';
     import ScrollTitle from './scroll-title.svelte';
     
+    interface Props {
+        skipTarget?: HTMLElement | string;
+    }
+    const {skipTarget}: Props = $props();
+
     let constellation = $state<Constellation>();
+
+    function scrollIntoView() {
+        console.log('scrollIntoView', skipTarget);
+        const target = typeof skipTarget === 'string' ? document.querySelector(skipTarget) : skipTarget;
+        target?.scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
 </script>
 
 <section class="full-width">
@@ -15,20 +26,16 @@
             words={['software', 'teams', 'experiences']} 
         />
         <button class="reset-button has-pointer-events" onclick={() => constellation?.reset()}>Reset</button>
+        <button class="skip-button has-pointer-events" onclick={scrollIntoView}>Skip</button>
     </div>
 </section>
 
 <style>
-    :global(.cta-title [data-highlight="experiences"]) {
-        color: var(--clr-primary);
-        /* font-weight: bold; */
-    }
-
     section {        
         position: relative;
         height: 600px;        
         width: 100%;    
-        border-block: var(--border-size-1) solid color-mix(in lch, var(--grayscale-900) 30%, rgba(255, 255, 255, 0));        
+        border-block: var(--section-border);        
 
         @media (--OSlight) {
             --clr-background: var(--grayscale-950);
@@ -77,17 +84,21 @@
         border: var(--border-size-2) solid var(--clr-text);
         background-color: transparent;
         color: var(--clr-text);
-    }
-
-    .reset-button {
-        position: absolute;
-        top: var(--spacing-block-1); right: 0;
-
         &:hover {
             border-color: var(--clr-primary);
             color: var(--clr-primary);
         }
     }
+
+    .reset-button {
+        position: absolute;
+        top: var(--spacing-block-1); right: 0;        
+    }
+
+    .skip-button {
+        position: absolute;
+        top: var(--spacing-block-1); left: 0;        
+    }   
 
     .header-text-container:hover .reset-button {
         background-color: var(--clr-background);

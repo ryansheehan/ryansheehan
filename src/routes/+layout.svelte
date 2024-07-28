@@ -1,73 +1,60 @@
 <script lang="ts">
     import "../style.css";
-    import GithubIcon from "../lib/icons/github.svelte";
-    import LinkedInIcon from '../lib/icons/linkedin.svelte';
+    import Socials from '$lib/components/socials.svelte';
     // import {activeRoute} from '../lib/actions/active-route.svelte';
 
     let {children} = $props();
 
+    const builtYear = 2024;
     const currentYear = new Date().getFullYear();
 </script>
 
-<main>    
-    <header class="content-grid">
-        <div class="primary-header__layout">
-            <a href="/" class="home-link">Ryan Sheehan</a>
-            <!-- <nav class="main-nav" aria-label="site navigation">
-                <ul>
-                    <li><a href="/" use:activeRoute>Home</a></li>
-                    <li><a href="/about" use:activeRoute>About</a></li>
-                </ul>
-            </nav> -->
-            <nav data-link-type="socials" aria-label="social media links">
-                <ul>
-                    <li>
-                        <a href="https://github.com/ryansheehan/">
-                            <GithubIcon class="social-icon"/>
-                            <span class="sr-only">Github</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/sheehanr/">
-                            <LinkedInIcon class="social-icon"/>
-                            <span class="sr-only">LinkedIn</span>
-                        </a>
-                    </li>
-                </ul>                
-            </nav>
-        </div>
-    </header>
+<header class="content-grid">
+    <div class="primary-header__layout">
+        <a href="/" class="home-link">Ryan Sheehan</a>
+        <!-- <nav class="main-nav" aria-label="site navigation">
+            <ul>
+                <li><a href="/" use:activeRoute>Home</a></li>
+                <li><a href="/about" use:activeRoute>About</a></li>
+            </ul>
+        </nav> -->
+        <Socials/>
+    </div>
+</header>
+<main>        
     {@render children()}
     <footer class="content-grid">
         <div class="footer__layout">
-            <p>&copy; {currentYear} Ryan Sheehan <span>All rights reserved.</span></p>
+            <p>&copy; {currentYear !== builtYear ? `${builtYear} - ${currentYear}` : `${currentYear}`} Ryan Sheehan <span>All rights reserved.</span></p>
+            <!-- <Socials/> -->
         </div>
     </footer>
 </main>
 
 <style>
+    :global(body) {
+        --section-border: var(--border-size-1) solid color-mix(in lch, var(--grayscale-900) 30%, rgba(255, 255, 255, 0));
+    }
+
     main {                
-        --gradient-gray: linear-gradient(in lch, var(--grayscale-950) 15%, color-mix(in lch, var(--grayscale-950) 80%, var(--grayscale-900)), var(--grayscale-900));
+        --gradient-gray: linear-gradient(in lch, var(--grayscale-950) 15%, color-mix(in lch, var(--grayscale-950) 80%, var(--grayscale-900)), var(--grayscale-900));        
 
         min-height: 100svh;
         /* background: var(--gradient-gray);         */
         position: relative;        
     }
 
-    header {        
+    header {      
+        z-index: 10000;  
+        isolation: isolate;
         align-items: baseline;
+        position: sticky;
+        top: 0;
+        background-color: var(--clr-background);
 
         padding-block: var(--spacing-block-1);
         /* margin-bottom: var(--spacing-block-1);     */
-    }
-
-    :global(.social-icon) {
-        fill:var(--clr-text);     
-        height:var(--spacing-block-1);   
-    }
-
-    :global(.social-icon:hover) {
-        fill:var(--clr-accent);     
+        border-bottom: var(--section-border);
     }
 
     .primary-header__layout {
@@ -93,19 +80,10 @@
         letter-spacing: var(--font-letterspacing-3);                
     }
 
-    nav ul {
-        display: flex;
-        gap: var(--size-3);
-
-        li {
-            list-style-type: none;   
-            max-height: var(--spacing-block-1);  
-        }
-    }  
-    
     footer {
         margin-block-start: var(--spacing-block-2);
         min-height: var(--spacing-block-3);        
+        border-top: var(--section-border);
 
         /* background-color: var(--clr-background-alt); */
         display: grid;
@@ -115,6 +93,13 @@
             font-size: var(--font-size-0);
             line-height: var(--line-height-0);
         }
+    }
+
+    .footer__layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        justify-items: center;
     }
 </style>
 
