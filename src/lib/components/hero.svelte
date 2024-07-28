@@ -23,7 +23,8 @@
     section {        
         position: relative;
         height: 600px;        
-        width: 100%;        
+        width: 100%;    
+        border-block: var(--border-size-1) solid color-mix(in lch, var(--grayscale-900) 30%, rgba(255, 255, 255, 0));
     }
 
     @media (max-height: 500px) {
