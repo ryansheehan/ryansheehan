@@ -24,23 +24,64 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         hasNoSharedViews = false;
     }
 
-    const {backBuffer, stride, byteStride, width, height, dt} = parseSharedVariables(sharedUint8ArrayView, sharedUint16ArrayView, sharedFloat64ArrayView);
+    const {backBuffer, stride, byteStride, width, height, dt, pointerDown, pointerX, pointerY} = parseSharedVariables(sharedUint8ArrayView, sharedUint16ArrayView, sharedFloat64ArrayView);
     
     const particlesView = new Float32Array(particlesBuffer, particleOffset * byteStride, particleCount * stride);
     const renderingView = new Uint8Array(renderingBuffers[backBuffer]);
 
     // update particles
+    // for(let i = 0; i < particleCount; i++) {
+    //     particlesView[i * stride + 0] += particlesView[i * stride + 2] * dt;
+    //     particlesView[i * stride + 1] += particlesView[i * stride + 3] * dt;
+
+    //     // bounce particles off the walls
+    //     if (particlesView[i * stride + 0] < 0 || particlesView[i * stride + 0] >= width) {
+    //         particlesView[i * stride + 2] *= -1;
+    //     }
+    //     if (particlesView[i * stride + 1] < 0 || particlesView[i * stride + 1] >= height) {
+    //         particlesView[i * stride + 3] *= -1;
+    //     }
+    // }
+
+    let x, xi, y, yi, vx, vxi, vy, vyi, gravDx, gravDy, dist, force: number;
+
+    // update particles
     for(let i = 0; i < particleCount; i++) {
-        particlesView[i * stride + 0] += particlesView[i * stride + 2] * dt;
-        particlesView[i * stride + 1] += particlesView[i * stride + 3] * dt;
+        xi = i * stride + 0;
+        yi = i * stride + 1;
+        vxi = i * stride + 2;
+        vyi = i * stride + 3;
+
+        x = particlesView[xi];
+        y = particlesView[yi];
+        vx = particlesView[vxi];
+        vy = particlesView[vyi];
+
+        gravDx = vx * 0.9;
+        gravDy = vy * 0.9;
+        if(pointerDown) {
+            gravDx = pointerX - x;
+            gravDy = pointerY - y;
+            dist = Math.sqrt(gravDx * gravDx + gravDy * gravDy);
+            force = 2 * Math.min(1200, 258300 / (dist * dist));
+            gravDx *= force / dist;
+            gravDy *= force / dist;
+        }
+
+        // particlesView[i * stride + 0] += particlesView[i * stride + 2] * dt;
+        // particlesView[i * stride + 1] += particlesView[i * stride + 3] * dt;
+        particlesView[xi] = x + gravDx * dt;
+        particlesView[yi] = y + gravDy * dt;
+        particlesView[vxi] = gravDx;
+        particlesView[vyi] = gravDy;
 
         // bounce particles off the walls
-        if (particlesView[i * stride + 0] < 0 || particlesView[i * stride + 0] >= width) {
-            particlesView[i * stride + 2] *= -1;
-        }
-        if (particlesView[i * stride + 1] < 0 || particlesView[i * stride + 1] >= height) {
-            particlesView[i * stride + 3] *= -1;
-        }
+        // if (particlesView[i * stride + 0] < 0 || particlesView[i * stride + 0] >= width) {
+        //     particlesView[i * stride + 2] *= -1;
+        // }
+        // if (particlesView[i * stride + 1] < 0 || particlesView[i * stride + 1] >= height) {
+        //     particlesView[i * stride + 3] *= -1;
+        // }
     }
 
     // draw particles

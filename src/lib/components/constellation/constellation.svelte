@@ -15,7 +15,9 @@
         setConstants,
         buildSharedViews,    
         buildBlockAlignedBuffer,
-		initializeParticlesState,   
+		initializeParticlesState,
+		setPointerPosition,
+		setPointerDown,           
     } from './particle.constants';
     import ParticleWorker from './particles.worker?worker';
 
@@ -32,6 +34,9 @@
     let height = $state(0);
     let canvas = $state<HTMLCanvasElement>();
     let ctx = $derived(canvas?.getContext('2d')!);
+    let ctxTransform = $derived(ctx?.getTransform()!);
+    let ctxInverseTransform = $derived(ctxTransform?.invertSelf()!);
+    let boundingRect = $derived(canvas?.getBoundingClientRect()!);
 
     let renderingBuffers: [SharedArrayBuffer, SharedArrayBuffer];
     let renderingBufferViews: [Uint8ClampedArray, Uint8ClampedArray];
@@ -125,7 +130,6 @@
                 worker.terminate();
             }            
         };
-
     })
 
     onDestroy(() => {
@@ -154,17 +158,69 @@
         initWorld(width, height);                
     });
   
+    function calculatePosition(tx: number, ty: number) {
+        const {left, top} = boundingRect;
+        const cx = tx - left;
+        const cy = ty - top;
+        const x = ctxInverseTransform.a * cx + ctxInverseTransform.c * cy + ctxInverseTransform.e;
+        const y = ctxInverseTransform.b * cx + ctxInverseTransform.d * cy + ctxInverseTransform.f;
+        setPointerPosition(x, y, sharedUint16ArrayView);
+    }
+
+    function mouseMove({clientX, clientY}: MouseEvent) {
+        calculatePosition(clientX, clientY);
+    }
+
+    function mouseDown({button}: MouseEvent) {
+        if (button === 0) {
+            setPointerDown(true, sharedUint8ArrayView);
+        }
+    }
+
+    function mouseUp({button}: MouseEvent) {
+        if (button === 0) {
+            setPointerDown(false, sharedUint8ArrayView);
+        }
+    }
+
+    function touchStart(e: TouchEvent) {        
+        // e.preventDefault();        
+        setPointerDown(true, sharedUint8ArrayView);
+    }
+
+    function touchEnd(e: TouchEvent) {
+        setPointerDown(false, sharedUint8ArrayView);
+    }
+
+    function touchMove(e: TouchEvent) {      
+        // e.preventDefault(); 
+        const {clientX, clientY} = e.touches[0];
+        calculatePosition(clientX, clientY);
+    }
+
+    export function reset() {
+        initializeParticlesState(particlesView, width, height, 10);
+    }
 </script>
 
-<canvas class="full-width" bind:this={canvas}></canvas>
+<canvas class="full-width" 
+    bind:this={canvas}     
+    ontouchstart={touchStart}
+    ontouchend={touchEnd}
+    ontouchmove={touchMove}    
+    onmousedown={mouseDown}
+    onmousemove={mouseMove}    
+></canvas>
+
+<svelte:window onmouseup={mouseUp} />
 
 <style>
-    canvas {        
+    canvas {            
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        z-index: -100;
+        bottom: 0;  
+        touch-action: none;      
     }
 </style>

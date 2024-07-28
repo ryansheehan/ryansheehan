@@ -1,6 +1,7 @@
 @import "./styles/base/media.css";
 @import "./styles/base/colors.css";
 @import "./styles/base/sizes.css";
+@import "./styles/base/borders.css";
 @import "./styles/base/reset.css";
 @import "./styles/base/theme.css";
 @import "./styles/base/typography.css";

@@ -12,8 +12,8 @@ export function initializeParticlesState(particles: Float32Array, w: number, h: 
     for (let i = 0;  i < particles.length; i++) {
         particles[i * stride + 0] = Math.random() * w;
         particles[i * stride + 1] = Math.random() * h;
-        particles[i * stride + 2] = (Math.random() * 2 - 1) * speed;
-        particles[i * stride + 3] = (Math.random() * 2 - 1) * speed;
+        particles[i * stride + 2] = 0; // (Math.random() * 2 - 1) * speed;
+        particles[i * stride + 3] = 0; // (Math.random() * 2 - 1) * speed;
     }
     return particles;
 }
@@ -32,16 +32,25 @@ export const sharedVariables = new SharedArrayBuffer(
     1 + // uint8: stride
     1 + // uint8: byteStride
     1 + // uint8: renderingStride
+    1 + // uint8: pointer down
+    1 + // empty
     2 + // uint16: width
     2 + // uint16: height    
+    2 + // uint16: pointer x
+    2 + // uint16: pointer y    
+    2 + // empty
     8   // double: dt 
 );
 
 export function buildSharedViews(sharedVars: SharedArrayBuffer): [Uint8Array, Uint16Array, Float64Array] {
     return [
         new Uint8Array(sharedVars), 
-        new Uint16Array(sharedVars, 4), 
-        new Float64Array(sharedVars, 8)
+        new Uint16Array(sharedVars, 6), 
+        new Float64Array(sharedVars, 16),
+
+        // new Uint8Array(sharedVars), 
+        // new Uint16Array(sharedVars, 4), 
+        // new Float64Array(sharedVars, 8)
     ];
 }
 
@@ -60,8 +69,8 @@ export interface ParticleWorkerResponseData {
 
 
 export function parseSharedVariables(uint8View: Uint8Array, uint16View: Uint16Array, float64View: Float64Array) {
-    const [backBuffer, stride, byteStride, renderingStride] = uint8View;
-    const [width, height] = uint16View;
+    const [backBuffer, stride, byteStride, renderingStride, pointerDown] = uint8View;
+    const [width, height, pointerX, pointerY] = uint16View;
     const [dt] = float64View;
 
     return {
@@ -69,8 +78,11 @@ export function parseSharedVariables(uint8View: Uint8Array, uint16View: Uint16Ar
         stride,
         byteStride,
         renderingStride,
+        pointerDown,
         width,
         height,
+        pointerX,
+        pointerY,
         dt
     }
 }
@@ -100,4 +112,21 @@ export function setConstants(stride: number, byteStride: number, renderingStride
     uint8View[1] = stride;
     uint8View[2] = byteStride;
     uint8View[3] = renderingStride;
+}
+
+export function getPointerPosition(uint16View: Uint16Array): [number, number] {
+    return [uint16View[2], uint16View[3]];
+}
+
+export function setPointerPosition(x: number, y: number, uint16View: Uint16Array) {
+    uint16View[2] = x;
+    uint16View[3] = y;
+}
+
+export function getPointerDown(uint8View: Uint8Array) {
+    return uint8View[4];
+}
+
+export function setPointerDown(down: boolean, uint8View: Uint8Array) {
+    uint8View[4] = down ? 1 : 0;
 }

@@ -2,7 +2,7 @@
     import "../style.css";
     import GithubIcon from "../lib/icons/github.svelte";
     import LinkedInIcon from '../lib/icons/linkedin.svelte';
-    import {activeRoute} from '../lib/actions/active-route.svelte';
+    // import {activeRoute} from '../lib/actions/active-route.svelte';
 
     let {children} = $props();
 </script>
@@ -11,12 +11,12 @@
     <header class="content-grid">
         <div class="primary-header__layout">
             <a href="/" class="home-link">Ryan Sheehan</a>
-            <nav class="main-nav" aria-label="site navigation">
+            <!-- <nav class="main-nav" aria-label="site navigation">
                 <ul>
                     <li><a href="/" use:activeRoute>Home</a></li>
                     <li><a href="/about" use:activeRoute>About</a></li>
                 </ul>
-            </nav>
+            </nav> -->
             <nav aria-label="social media links">
                 <ul>
                     <li>
@@ -71,9 +71,9 @@
         color: var(--clr-text);        
     }
 
-    .main-nav li:hover, .main-nav li:has(.active) {
+    /* .main-nav li:hover, .main-nav li:has(.active) {
         border-block-end: var(--size-0) solid var(--clr-text);        
-    }
+    } */
     
     .home-link {            
         font-size: var(--font-size-3);
