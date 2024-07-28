@@ -16,10 +16,11 @@ const crossOriginIsolation = {
 
 export default defineConfig({
 	plugins: [sveltekit(), crossOriginIsolation],
-	// server: {
-	// 	headers: {
-	// 		'Cross-Origin-Opener-Policy': 'same-origin',
-	// 		'Cross-Origin-Embedder-Policy': 'require-corp'
-	// 	}
-	// }
+	server: {
+		headers: {
+			'Cross-Origin-Opener-Policy': 'same-origin',
+			'Cross-Origin-Embedder-Policy': 'require-corp',
+            'Cross-Origin-Resource-Policy': 'cross-origin'
+		}
+	}
 });

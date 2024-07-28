@@ -67,7 +67,7 @@
                 lastTime = currentTime;            
 
                 // get the current back buffer to render
-                let backBufferIndex = getBackBuffer(sharedUint8ArrayView);                
+                let backBufferIndex = getBackBuffer(sharedUint8ArrayView);             
                 const frontBuffer = renderingBufferViews[backBufferIndex];
 
                 // swap the back buffer index
@@ -91,7 +91,7 @@
                 }
                 activeWorkers = maxWorkers;                 
 
-                // render the simulation frame    
+                // render the simulation frame                   
                 imageData.data.set(frontBuffer);
                 ctx.putImageData(imageData, 0, 0);
             }
@@ -136,7 +136,7 @@
         cleanUp();
     })
 
-    function initWorld(w: number, h: number) {
+    function initWorld(w: number, h: number) {        
         renderingBuffers = buildRenderingBuffers(w, h);
         renderingBufferViews = [new Uint8ClampedArray(renderingBuffers[0]), new Uint8ClampedArray(renderingBuffers[1])];
         imageData = new ImageData(w, h);
@@ -155,7 +155,7 @@
         canvas!.width = width;
         canvas!.height = height;
 
-        initWorld(width, height);                
+        initWorld(Math.floor(width), Math.floor(height));                
     });
   
     function calculatePosition(tx: number, ty: number) {
