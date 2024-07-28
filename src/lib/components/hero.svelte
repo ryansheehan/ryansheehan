@@ -24,7 +24,17 @@
         position: relative;
         height: 600px;        
         width: 100%;    
-        border-block: var(--border-size-1) solid color-mix(in lch, var(--grayscale-900) 30%, rgba(255, 255, 255, 0));
+        border-block: var(--border-size-1) solid color-mix(in lch, var(--grayscale-900) 30%, rgba(255, 255, 255, 0));        
+
+        @media (--OSlight) {
+            --clr-background: var(--grayscale-950);
+            --clr-background-alt: var(--surface-800);
+            --clr-text: var(--grayscale-100);
+            --clr-primary: var(--primary-300);
+        }
+
+        background-color: var(--clr-background);
+        color: var(--clr-text);
     }
 
     @media (max-height: 500px) {
@@ -62,6 +72,7 @@
         padding-inline: var(--size-relative-3);
         border: var(--border-size-2) solid var(--clr-text);
         background-color: transparent;
+        color: var(--clr-text);
     }
 
     .reset-button {

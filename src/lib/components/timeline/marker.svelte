@@ -57,10 +57,12 @@
         grid-row: 1;
         height: 100%;
         border-right: var(--color) solid var(--border-size);
-    }   
+    } 
+    
     
     .marker-container:last-of-type .line {
-        height: calc(100% - var(--half-size));
+        /* height: calc(100% - var(--half-size));  */
+        display: none;       
     }
 
     .year {

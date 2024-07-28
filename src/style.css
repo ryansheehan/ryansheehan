@@ -3,9 +3,9 @@
 @import "./styles/base/sizes.css";
 @import "./styles/base/borders.css";
 @import "./styles/base/reset.css";
-@import "./styles/base/theme.css";
 @import "./styles/base/typography.css";
 @import "./styles/base/visually-hidden.css";
 
+@import "./styles/app/theme.css";
 @import "./styles/app/default.css";
 @import "./styles/app/layout.css";

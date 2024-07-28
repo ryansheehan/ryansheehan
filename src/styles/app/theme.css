@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --clr-background: var(--grayscale-100);
     --clr-background-alt: var(--surface-300);
     --clr-text: var(--grayscale-950);
@@ -10,9 +10,9 @@
     --clr-background-alt: var(--surface-800);
     --clr-text: var(--grayscale-100);
     --clr-primary: var(--primary-300);
-}
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) { */
     :root {
         --clr-background: var(--grayscale-950);
         --clr-background-alt: var(--surface-800);
@@ -26,15 +26,15 @@
         --clr-text: var(--grayscale-950);
         --clr-primary: var(--primary-800);
     }
-}
+/* } */
 
 /* dark mode user-agent-styles */
 html {
-    color-scheme: dark light;   
+    /* color-scheme: dark light;    */
     /* color-scheme: light dark;    */
 }
 
-[data-theme="light"] {
+/* [data-theme="light"] {
     color-scheme: light;
 
     --clr-background: var(--grayscale-100);
@@ -50,7 +50,7 @@ html {
     --clr-background-alt: var(--surface-800);
     --clr-text: var(--grayscale-100);
     --clr-primary: var(--primary-300);
-}
+} */
 
 body {
     background-color: var(--clr-background);
