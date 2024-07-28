@@ -94,18 +94,29 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         const rx = x / width;
         const ry = y / height;
 
-        Atomics.add(renderingView, index    , 25 + 50 * rx);        // red
-        Atomics.add(renderingView, index + 1, 25 + 50 * ry);        // green
-        Atomics.add(renderingView, index + 2, 25 + 50 * (1-rx));    // blue
+        // red
+        Atomics.store(
+            renderingView,
+            index,
+            Math.min(255, Atomics.load(renderingView, index) + 25 + 50 * rx)
+        );
 
-        Atomics.store(renderingView, index + 3, 255);              // alpha
+        // green
+        Atomics.store(
+            renderingView,
+            index + 1,
+            Math.min(255, Atomics.load(renderingView, index + 1) + 25 + 50 * ry)
+        );
 
-        // renderingView[index    ] += 25 + 50 * rx; // red
-        // renderingView[index + 1] += 25 + 50 * ry; // green
-        // renderingView[index + 2] += 25 + 50 * (1-rx); // blue
-        // renderingView[index + 3] = 255; // alpha
-                
-        // renderingView[index    ] = renderingView[index + 1] = renderingView[index + 2] = renderingView[index + 3] = 255;
+        // blue
+        Atomics.store(
+            renderingView,
+            index + 2,
+            Math.min(255, Atomics.load(renderingView, index + 2) + 25 + 50 * (1-rx))
+        );
+
+        // alpha  
+        Atomics.store(renderingView, index + 3, 255);                    
     }    
 
     const responseData: ParticleWorkerResponseData = {id};
