@@ -8,14 +8,13 @@
 <section>
     <h2>Professional Timeline</h2>
     <Timeline class="work-timeline">
-        <Marker year="2024" active>
+        <Marker year="2024">
             <hgroup>
                 <h3>Executive MBA</h3>
                 <p><a href="https://www.smu.edu/cox/business-degrees/mba-programs/executive-mba/curriculum">Southern Methodist University</a></p>
             </hgroup>
-            <!-- <p class="description">Lead a cross-functional team of application developers, user experience designers, systems architects, and infrastructure engineers, delivering Tyler's cloud platform control plane. Directed the development of Tyler's Forge UX design system.</p> -->
         </Marker>
-        <Marker year="2020" active>
+        <Marker year="2020">
             <hgroup>
                 <h3>Software Development Manager</h3>
                 <p><a href="https://www.tylertech.com/">Tyler Technologies</a></p>
@@ -50,10 +49,16 @@
             </hgroup>
             <p class="description">Software engineer building cross-platform video games. Worked closely with artists, animators, audio engineers,designers, and testers to implement the vision for the look and feel of a title.</p>
         </Marker>
-        <Marker year="2006">
+        <Marker year="2008">
             <hgroup>
                 <h3>Masters Interactive Technology</h3>
                 <p><a href="https://www.smu.edu/guildhall">SMU Guildhall</a></p>
+            </hgroup>
+        </Marker>
+        <Marker year="2005">
+            <hgroup>
+                <h3>Bachelors Computer Science</h3>
+                <p><a href="https://www.siue.edu/engineering/computer-science/">Southern Illinois University Edwardsville</a></p>
             </hgroup>
         </Marker>
 
@@ -82,29 +87,25 @@
     hgroup h3 {
         max-inline-size: var(--size-header-3);        
         font-size: var(--font-size-3);
-        line-height: var(--line-height-3);
-        font-weight: var(--font-weight-6);        
+        line-height: var(--line-height-1);
+        font-weight: var(--font-weight-6);  
+        padding-bottom: var(--size-2);      
     }
 
     hgroup p {
         font-style: italic;
 
-        & a {            
-            text-decoration: none;
+        & a:visited, & a:link, & a:active {
+            color: var(--clr-text);            
+        }
 
-            &:visited {
-                color: var(--clr-text);
-            }
-
-            &:hover, &:focus {
-                text-decoration: underline;
-            }
+        & a:hover {
+            color: var(--clr-accent);
         }
     }
 
     p.description {
-        max-inline-size: var(--size-content-2);  
-        padding-bottom: var(--spacing-block-2);         
+        max-inline-size: var(--size-content-2);             
         text-wrap: normal;
     }
 </style>

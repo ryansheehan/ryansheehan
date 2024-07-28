@@ -1,16 +1,17 @@
 <script lang="ts">
-    import { fly } from 'svelte/transition';
+    import { fly, fade } from 'svelte/transition';
     import { onDestroy, onMount, tick } from 'svelte';
 
     import type {HTMLAttributes} from 'svelte/elements';
 
     interface Props extends HTMLAttributes<HTMLHeadingElement> {
-        lede: string;
+        lede: string[];
         words: string[];
         delay?: number;
     }
-    const {lede, words, delay = 3000, ...attrs}: Props = $props();
+    const {lede = $bindable([]), words = $bindable([]), delay = 3000, ...attrs}: Props = $props();
 
+    let phrases = $derived(words.map((word, index) => [lede[index], word]));
     let activeIndex = $state(words.length - 1);    
     let intervalHandle = -1;
     
@@ -24,26 +25,27 @@
 </script>
 
 {#snippet word({hidden, text})}
-    <span class:hidden={hidden} aria-hidden={hidden} class="word">{text}</span>    
+    <span class:hidden={hidden} aria-hidden={hidden} class="phrase">{text}</span>    
 {/snippet}
 
-<h1 class:banner={true} class:glass-effect={true} {...attrs}>
-    <span>{lede}</span>
+<h1 class:banner={true} class:glass-effect={true} {...attrs}>    
     <span class="cycler">
         <!-- update words -->
-        {#each words as text, index (index)}
-            {#if index === activeIndex}                
-                <span class="word"
-                    data-highlight={text}
-                    in:fly={{duration: 500, y: 50}} 
-                    out:fly={{duration: 500, y: -50}} 
-                >{text}</span>
+        {#each phrases as phrase, index (index)}
+            {#if index === activeIndex}
+                <span class="phrase" transition:fade={{duration: 500}}>
+                    <span class="lede">{phrase[0]}</span>
+                    <span class="word">{phrase[1]}</span>
+                </span>
             {/if}
         {/each}
 
         <!-- spacer -->
-        {#each words as text, index (index)}
-            {@render word({text, hidden: true})}
+        {#each phrases as phrase, index (index)}
+            <span class="phrase hidden" aria-hidden="true">
+                <span class="lede">{phrase[0]}</span>
+                <span class="word">{phrase[1]}</span>
+            </span>            
         {/each}
     </span>
 </h1>
@@ -61,20 +63,35 @@
 
     .cycler {
         display: inline-grid;
-        grid-template-columns: min-content;
+        grid-template-columns: fit-content;
         grid-template-rows: auto;
         /* justify-content: center; */
-        text-align: center;        
+        /* text-align: center;  */
+        align-items: center;       
     }
 
     .hidden {
         visibility: hidden;
     }
 
-    .word {
+    .phrase {
         grid-column: 1 / span 1;
         grid-row: 1 / span 1;            
-        font-style: italic;    
+        /* font-style: italic;     */   
+        display: inline-grid;
+        grid-template-columns: .4fr .6fr;
+        gap: var(--size-relative-2);
+        align-items: baseline;
+    }
+
+    .lede {
+        justify-self: end;
+        color: var(--clr-primary);
+    }
+
+    .word {
+        justify-self: start;
+        color: var(--clr-accent);
     }
 
     .banner {

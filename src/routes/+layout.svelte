@@ -66,6 +66,10 @@
         height:var(--spacing-block-1);   
     }
 
+    :global(.social-icon:hover) {
+        fill:var(--clr-accent);     
+    }
+
     .primary-header__layout {
         display: flex;
         justify-content: space-between;
@@ -97,11 +101,7 @@
             list-style-type: none;   
             max-height: var(--spacing-block-1);  
         }
-    }
-
-    :global([data-link-type="socials"] svg:hover) {
-        margin-block-start: var(--size-00);        
-    }   
+    }  
     
     footer {
         margin-block-start: var(--spacing-block-2);

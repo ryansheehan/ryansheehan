@@ -1,20 +1,25 @@
 <script lang="ts">
     import type {Snippet} from 'svelte';
 
-    interface Props {   
-        active?: boolean;     
+    interface Props {                
         year: string;    
         children?: Snippet<[]>;    
     }
 
-    let {active=false, year, children}: Props = $props();
+    let {year, children}: Props = $props();
+
+    let active = $state(false);
+
+    function onclick() {
+        active = !active;
+    }
 
 </script>
 
 <div class="marker-container">
     <div class="year">{year}</div>
     <div class="line"></div>
-    <div class="marker" data-id={year} data-active={active}></div>
+    <button class="marker" data-id={year} data-active={active} {onclick}></button>
     <section class="description-container">
         {@render children?.()}
     </section>
@@ -25,6 +30,7 @@
     .description-container {
         grid-column: description;        
         padding-inline-start: var(--size-4);
+        padding-block-end: var(--spacing-block-3);
     }
 
     .marker-container {

@@ -9,7 +9,11 @@
 <section class="full-width">
     <Constellation bind:this={constellation} />
     <div class="header-text-container isolate no-pointer-events no-select">        
-        <ScrollTitle class="cta-title" lede="I build" words={['software', 'teams', 'experiences']} />
+        <ScrollTitle class="cta-title" 
+            delay={4000}
+            lede={['building', 'leading', 'crafting']} 
+            words={['software', 'teams', 'experiences']} 
+        />
         <button class="reset-button has-pointer-events" onclick={() => constellation?.reset()}>Reset</button>
     </div>
 </section>
@@ -78,6 +82,11 @@
     .reset-button {
         position: absolute;
         top: var(--spacing-block-1); right: 0;
+
+        &:hover {
+            border-color: var(--clr-primary);
+            color: var(--clr-primary);
+        }
     }
 
     .header-text-container:hover .reset-button {
