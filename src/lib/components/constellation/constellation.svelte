@@ -105,14 +105,14 @@
 
     onMount(() => {
         const parentElement = canvas!.parentElement!;
-        width = parentElement.clientWidth;
-        height = parentElement.clientHeight;
+        width = Math.floor(parentElement.clientWidth);
+        height = Math.floor(parentElement.clientHeight);
         
         const resizeObserver = new ResizeObserver(([ele]) => {
             const {contentRect} = ele;
             const {width: containerWidth, height: containerHeight} = contentRect;
-            if (width !== containerWidth) width = containerWidth;
-            if (height !== containerHeight) height = containerHeight;           
+            if (width !== containerWidth) width = Math.floor(containerWidth);
+            if (height !== containerHeight) height = Math.floor(containerHeight);           
         });
         resizeObserver.observe(parentElement);
 
