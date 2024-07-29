@@ -24,7 +24,7 @@
         
         position: relative;
         display: grid;
-        grid-template-columns: [year-start] min-content [year-end marker-start] min-content [marker-end description-start] minmax(min-content, 1fr) [description-end];
+        grid-template-columns: [year-start] max-content [year-end marker-start] min-content [marker-end description-start] minmax(min-content, 1fr) [description-end];
         grid-auto-rows: var(--marker-height);
     }
 

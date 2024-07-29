@@ -13,66 +13,81 @@
 <section {...attrs}>
     <h2>Professional Timeline</h2>
     <Timeline class="work-timeline">
-        <Marker year="2024">
+        <Marker yearStart="2020" yearEnd="current" active>
+            <hgroup>
+                <h3 class="current">Software Development Manager</h3>
+                <p><a href="https://www.tylertech.com/">Tyler Technologies</a></p>
+            </hgroup>
+            <p class="description">Lead a cross-functional team of application developers, user experience designers, systems architects, and infrastructure engineers to deliver Tyler's cloud platform control plane. Direct the development of Tyler's Forge UX design system built with standard web-components. Oversee development and maintenance of over a dozen web applications built on a variety of tech stacks.</p>
+        </Marker>
+        <Marker yearStart="2022" yearEnd="2024">
             <hgroup>
                 <h3>Executive MBA</h3>
                 <p><a href="https://www.smu.edu/cox/business-degrees/mba-programs/executive-mba/curriculum">Southern Methodist University</a></p>
-            </hgroup>
+            </hgroup>            
+            <p class="description">Courses: Accounting, Finance, Statistics, Operations Management, Decision Modeling, Marketing, Executive Leadership, Economics, Business Law, Strategic Financial Analysis, Negotiations, Entrepreneurship, War Games.</p>
+            <p class="description">GPA: 3.818</p>
         </Marker>
-        <Marker year="2020">
-            <hgroup>
-                <h3>Software Development Manager</h3>
-                <p><a href="https://www.tylertech.com/">Tyler Technologies</a></p>
-            </hgroup>
-            <p class="description">Lead a cross-functional team of application developers, user experience designers, systems architects, and infrastructure engineers, delivering Tyler's cloud platform control plane. Directed the development of Tyler's Forge UX design system.</p>
-        </Marker>
-        <Marker year="2016">
+        <Marker yearStart="2016" yearEnd="2020">
             <hgroup>
                 <h3>Lead Software Engineer</h3>
                 <p><a href="https://www.tylertech.com/">Tyler Technologies</a></p>
             </hgroup>
-            <p class="description">Guide the development of robust web applications through technical leadership, mentoring, and hands-on coding. Champion cutting-edge technologies and blaze the trail for Tyler's cloud transformation.</p>
+            <p class="description">Guided the development of robust web applications through technical leadership, mentoring, and hands-on coding. Championed cutting-edge technologies and blazed the trail for Tyler's cloud transformation. Web applications were mostly built on DotNet Core and Angular, with isolated development environments through the use of Docker and Docker Compose.</p>
         </Marker>
-        <Marker year="2013">
+        <Marker yearStart="2016" yearEnd="2014">
             <hgroup>
-                <h3>Scrum Master / Senior Engineer</h3>
+                <h3>Scrum Master</h3>
                 <p><a href="https://www.tylertech.com/">Tyler Technologies</a></p>
             </hgroup>
-            <p class="description">Initially hired as a senior engineer, then moved into the role of Scrum Master. Responsible for leading a team of developers in agile practices, modernizing a primary product's financial system.</p>
+            <p class="description">Led a team of developers, testers, and analysts in Agile practices, modernizing a primary product's financial system. Developed a behavior-driven development framework to aid in testing between new and old systems, ensuring no net-new issues are introduced.</p>
         </Marker>
-        <Marker year="2010">
+        <Marker yearStart="2014" yearEnd="2013">
+            <hgroup>
+                <h3>Senior Engineer</h3>
+                <p><a href="https://www.tylertech.com/">Tyler Technologies</a></p>
+            </hgroup>
+            <p class="description">Built an extensible jury selection product in WPF. Used Microsoft's Managed Extensibility Framework to modify business logic and user interfaces, facilitating jurisdicitional differences in the selection process.</p>
+        </Marker>
+        <Marker yearStart="2013" yearEnd="2010">
             <hgroup>
                 <h3>Software Engineer Consultant</h3>
                 <p><a href="https://www.halliburton.com/">Halliburton</a></p>
             </hgroup>
-            <p class="description">Consulted on applying game development technology and techniques to build a 3D real-time down-hole well-monitoring technology. Design and built a process tracking application to manage sign-offs and procedures for teams in the field.</p>
+            <p class="description">Consulted on applying the Unity Game Development engine. Merged enterprise UI techniques to build a 3D real-time down-hole oil well-monitoring application. Designed and built a process tracking application to manage sign-offs and procedures for teams in the field.</p>
         </Marker>
-        <Marker year="2008">
+        <Marker yearStart="2010" yearEnd="2008">
             <hgroup>
                 <h3>Software Engineer</h3>
                 <p><a href="https://www.high-voltage.com/">High Voltage Software</a></p>
             </hgroup>
-            <p class="description">Software engineer building cross-platform video games. Worked closely with artists, animators, audio engineers,designers, and testers to implement the vision for the look and feel of a title.</p>
+            <p class="description">Engineered cross-platform video games for Nintendo Wii, Sony Playstation Portable, and Microsoft XBox360. Worked closely with artists, animators, audio engineers, designers, and testers to implement the vision for each product. Oversaw three titles through each platform certification process.</p>
         </Marker>
-        <Marker year="2008">
+        <Marker yearStart="2008" yearEnd="2006">
             <hgroup>
                 <h3>Masters Interactive Technology</h3>
                 <p><a href="https://www.smu.edu/guildhall">SMU Guildhall</a></p>
             </hgroup>
+            <p class="description">Courses: Game Studies, Linear Algebra, Simulation Physics, Interactive Software, Production.</p>       
         </Marker>
-        <Marker year="2005">
+        <Marker yearStart="2005" yearEnd="2001">
             <hgroup>
                 <h3>Bachelors Computer Science</h3>
                 <p><a href="https://www.siue.edu/engineering/computer-science/">Southern Illinois University Edwardsville</a></p>
             </hgroup>
+            <p class="description">Relevant Courses: Software Engineering, Microcontrollers, Robotics, Networking.</p>
         </Marker>
-
     </Timeline>
 </section>
 
 <style>
     :global(.work-timeline) {
         --timeline-size: var(--size-8);        
+    }
+
+    .current {
+        /* font-weight: var(--font-weight-8); */
+        color: var(--clr-primary);
     }
 
     section {

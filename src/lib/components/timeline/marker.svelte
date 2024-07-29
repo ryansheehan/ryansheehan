@@ -1,25 +1,27 @@
 <script lang="ts">
     import type {Snippet} from 'svelte';
 
-    interface Props {                
-        year: string;    
+    interface Props {           
+        active?: boolean;  
+        yearStart: string;
+        yearEnd: string;         
+        onclick?: (event: MouseEvent) => void;
         children?: Snippet<[]>;    
     }
 
-    let {year, children}: Props = $props();
-
-    let active = $state(false);
-
-    function onclick() {
-        active = !active;
-    }
-
+    let {active=false, yearStart, yearEnd, onclick=$bindable(() => {}), children}: Props = $props();
+        
 </script>
 
 <div class="marker-container">
-    <div class="year">{year}</div>
+    <div class="year">
+        <span>{yearStart}</span>
+        <span>-</span>
+        <span>{yearEnd}</span>
+    </div>
+    <!-- <div class="year">{year}</div> -->
     <div class="line"></div>
-    <button class="marker" data-id={year} data-active={active} {onclick}></button>
+    <button class="marker" data-active={active} {onclick}></button>
     <section class="description-container">
         {@render children?.()}
     </section>
@@ -64,17 +66,27 @@
         height: 100%;
         border-right: var(--color) solid var(--border-size);
     } 
-    
-    
-    .marker-container:last-of-type .line {
-        /* height: calc(100% - var(--half-size));  */
-        display: none;       
-    }
 
     .year {
         grid-column: year;
         padding-block-start: calc(var(--half-size) - (var(--spacing-block-1) * 0.5));
         padding-inline-end: var(--size-relative-3);
+        justify-self: end;
+    }
+
+    @media (--sm-n-below) {
+        .year {
+            /* transform-origin: bottom right;
+            transform: rotate(-90deg); */
+
+            /* transform: scaleX(-1); */
+            transform: rotate(-180deg);
+            writing-mode: vertical-lr;
+            text-align: right;
+            padding: 0;
+            padding-bottom: calc(var(--size) + var(--size-3));
+            margin-right: var(--size-000);
+        }
     }
 
     .marker[data-active="true"]::before {        
