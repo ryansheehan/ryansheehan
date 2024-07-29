@@ -5,8 +5,8 @@
         stride, byteStride, 
         renderingStride,         
         sharedVariables,
-        setWidthHeight,
-        buildRenderingBuffers,
+        setWidthHeight,        
+        buildParticleCountBuffers,
         type ParticleWorkerData,
 		type ParticleWorkerResponseData,
 	 	getBackBuffer,
@@ -38,8 +38,8 @@
     let ctxInverseTransform = $derived(ctxTransform?.invertSelf()!);
     let boundingRect = $derived(canvas?.getBoundingClientRect()!);
 
-    let renderingBuffers: [SharedArrayBuffer, SharedArrayBuffer];
-    let renderingBufferViews: [Uint8ClampedArray, Uint8ClampedArray];
+    let countBuffers: [SharedArrayBuffer, SharedArrayBuffer];
+    let countBufferViews: [Uint32Array, Uint32Array];
     let imageData: ImageData;
 
     let cleanUp: () => void = () => {};
@@ -60,6 +60,9 @@
     function startSimulation() {        
         let lastTime: DOMHighResTimeStamp;
 
+        const baseBrightness = 25; // [0-255]
+        const positionalBrightness = 50; // [0-255]
+
         function runSimulation(currentTime: DOMHighResTimeStamp) {
             if (activeWorkers === 0) {  
                 const dt = (currentTime - lastTime) / 1000;              
@@ -67,15 +70,15 @@
                 lastTime = currentTime;            
 
                 // get the current back buffer to render
-                let backBufferIndex = getBackBuffer(sharedUint8ArrayView);             
-                const frontBuffer = renderingBufferViews[backBufferIndex];
+                let backBufferIndex = getBackBuffer(sharedUint8ArrayView);                             
+                const countBuffer = countBufferViews[backBufferIndex];
 
                 // swap the back buffer index
                 backBufferIndex ^= 1;
                 setBackBuffer(backBufferIndex, sharedUint8ArrayView);
 
-                // clear the new back buffer
-                renderingBufferViews[backBufferIndex].fill(0);                
+                // clear the new back buffer                     
+                countBufferViews[backBufferIndex].fill(0);
 
                 // notify workers to process the current simulation frame         
                 for(let id = 0; id < maxWorkers; id++) {
@@ -84,15 +87,33 @@
                         particleCount: particleBlockSize,
                         particleOffset: id * particleBlockSize,
                         sharedVariables,
-                        particlesBuffer,
-                        renderingBuffers,
+                        particlesBuffer,                        
+                        countBuffers
                     };
                     workers[id].postMessage(frameData);
                 }
                 activeWorkers = maxWorkers;                 
 
                 // render the simulation frame                   
-                imageData.data.set(frontBuffer);
+                for(let particleIndex = 0, pixelIndex = 0; particleIndex < countBuffer.length; particleIndex++, pixelIndex += 4) {
+                    const count = countBuffer[particleIndex];
+                    
+                    const rx = (particleIndex % width) / width;            
+                    const ry = Math.floor(particleIndex / width) / height;
+                    
+                    // red
+                    imageData.data[pixelIndex    ] = count * (baseBrightness + positionalBrightness * rx);                    
+
+                    // green
+                    imageData.data[pixelIndex + 1] = count * (baseBrightness + positionalBrightness * ry);
+
+                    // blue
+                    imageData.data[pixelIndex + 2] = count * (baseBrightness + positionalBrightness * (1 - rx));
+
+                    // alpha
+                    imageData.data[pixelIndex + 3] = 255;
+                }
+
                 ctx.putImageData(imageData, 0, 0);
             }
             animFrameHandle = requestAnimationFrame(runSimulation);    
@@ -105,14 +126,14 @@
 
     onMount(() => {
         const parentElement = canvas!.parentElement!;
-        width = parentElement.clientWidth;
-        height = parentElement.clientHeight;
+        width = Math.floor(parentElement.clientWidth);
+        height = Math.floor(parentElement.clientHeight);
         
         const resizeObserver = new ResizeObserver(([ele]) => {
             const {contentRect} = ele;
             const {width: containerWidth, height: containerHeight} = contentRect;
-            if (width !== containerWidth) width = containerWidth;
-            if (height !== containerHeight) height = containerHeight;           
+            if (width !== containerWidth) width = Math.floor(containerWidth);
+            if (height !== containerHeight) height = Math.floor(containerHeight);           
         });
         resizeObserver.observe(parentElement);
 
@@ -136,9 +157,9 @@
         cleanUp();
     })
 
-    function initWorld(w: number, h: number) {        
-        renderingBuffers = buildRenderingBuffers(w, h);
-        renderingBufferViews = [new Uint8ClampedArray(renderingBuffers[0]), new Uint8ClampedArray(renderingBuffers[1])];
+    function initWorld(w: number, h: number) {                
+        countBuffers = buildParticleCountBuffers(w, h);
+        countBufferViews = [new Uint32Array(countBuffers[0]), new Uint32Array(countBuffers[1])];
         imageData = new ImageData(w, h);
         setWidthHeight(w, h, sharedUint16ArrayView);
 

@@ -3,9 +3,6 @@ export const stride = 4; // 4 floats x,y,dx,dy
 export const byteStride = stride * 4; // 4 bytes per float
 export const renderingStride = 4; // 4 bytes per pixel (r,g,b,a)
 
-// export const particleCount = 100_000;
-// export const particlesState = new SharedArrayBuffer(particleCount * byteStride);
-
 // initialize the particle memory block with random positions and velocities
 // returns the FLoat32Array view of the shared memory
 export function initializeParticlesState(particles: Float32Array, w: number, h: number, speed = 10) {    
@@ -47,10 +44,6 @@ export function buildSharedViews(sharedVars: SharedArrayBuffer): [Uint8Array, Ui
         new Uint8Array(sharedVars), 
         new Uint16Array(sharedVars, 6), 
         new Float64Array(sharedVars, 16),
-
-        // new Uint8Array(sharedVars), 
-        // new Uint16Array(sharedVars, 4), 
-        // new Float64Array(sharedVars, 8)
     ];
 }
 
@@ -59,8 +52,8 @@ export interface ParticleWorkerData {
     particleCount: number;
     particleOffset: number;
     sharedVariables: SharedArrayBuffer;
-    particlesBuffer: SharedArrayBuffer;
-    renderingBuffers: [SharedArrayBuffer, SharedArrayBuffer];
+    particlesBuffer: SharedArrayBuffer;    
+    countBuffers: [SharedArrayBuffer, SharedArrayBuffer];
 }
 
 export interface ParticleWorkerResponseData {
@@ -87,8 +80,8 @@ export function parseSharedVariables(uint8View: Uint8Array, uint16View: Uint16Ar
     }
 }
 
-export function buildRenderingBuffers(w: number, h: number):[SharedArrayBuffer, SharedArrayBuffer]  {
-    return [new SharedArrayBuffer(w * h * renderingStride), new SharedArrayBuffer(w * h * renderingStride)];
+export function buildParticleCountBuffers(w: number, h: number): [SharedArrayBuffer, SharedArrayBuffer] {
+    return [new SharedArrayBuffer(w * h * 4), new SharedArrayBuffer(w * h * 4)];
 }
 
 export function setDeltaTime(dt: DOMHighResTimeStamp, float64View: Float64Array) {    
