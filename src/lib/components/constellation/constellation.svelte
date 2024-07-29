@@ -33,10 +33,7 @@
     let width = $state(0);
     let height = $state(0);
     let canvas = $state<HTMLCanvasElement>();
-    let ctx = $derived(canvas?.getContext('2d')!);
-    let ctxTransform = $derived(ctx?.getTransform()!);
-    let ctxInverseTransform = $derived(ctxTransform?.invertSelf()!);
-    let boundingRect = $derived(canvas?.getBoundingClientRect()!);
+    let ctx = $derived(canvas?.getContext('2d')!);    
 
     let renderingBuffers: [SharedArrayBuffer, SharedArrayBuffer];
     let renderingBufferViews: [Uint8ClampedArray, Uint8ClampedArray];
@@ -121,15 +118,20 @@
         workers = Array.from({length: maxWorkers}, () => new ParticleWorker());
         workers.forEach(worker => worker.addEventListener('message', workerResponseHandler));
 
-        startSimulation();
+        document.addEventListener('mousemove', mouseMove);
+        document.addEventListener('touchmove', touchMove);
 
         cleanUp = () => {
             cancelAnimationFrame(animFrameHandle);
             resizeObserver.disconnect();  
             for(const worker of workers) {
                 worker.terminate();
-            }            
+            } 
+            document.removeEventListener('mousemove', mouseMove);
+            document.removeEventListener('touchmove', touchMove);
         };
+
+        startSimulation();
     })
 
     onDestroy(() => {
@@ -157,13 +159,23 @@
 
         initWorld(Math.floor(width), Math.floor(height));                
     });
+
+    export function reset() {
+        initializeParticlesState(particlesView, width, height, 10);
+    }
   
     function calculatePosition(tx: number, ty: number) {
-        const {left, top} = boundingRect;
+        if(!canvas || !ctx) return;
+
+        const {left, top} = canvas?.getBoundingClientRect()!;
         const cx = tx - left;
         const cy = ty - top;
-        const x = ctxInverseTransform.a * cx + ctxInverseTransform.c * cy + ctxInverseTransform.e;
-        const y = ctxInverseTransform.b * cx + ctxInverseTransform.d * cy + ctxInverseTransform.f;
+
+        const inverseMatrix = ctx?.getTransform()
+
+        const x = inverseMatrix.a * cx + inverseMatrix.c * cy + inverseMatrix.e;
+        const y = inverseMatrix.b * cx + inverseMatrix.d * cy + inverseMatrix.f;
+
         setPointerPosition(x, y, sharedUint16ArrayView);
     }
 
@@ -197,19 +209,13 @@
         const {clientX, clientY} = touches[0];
         calculatePosition(clientX, clientY);
     }
-
-    export function reset() {
-        initializeParticlesState(particlesView, width, height, 10);
-    }
 </script>
 
 <canvas class="full-width" 
     bind:this={canvas}     
     ontouchstart={touchStart}
-    ontouchend={touchEnd}
-    ontouchmove={touchMove}    
-    onmousedown={mouseDown}
-    onmousemove={mouseMove}    
+    ontouchend={touchEnd}        
+    onmousedown={mouseDown}    
 ></canvas>
 
 <svelte:window onmouseup={mouseUp} />
