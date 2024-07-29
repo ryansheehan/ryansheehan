@@ -5,8 +5,8 @@
         stride, byteStride, 
         renderingStride,         
         sharedVariables,
-        setWidthHeight,
-        buildRenderingBuffers,
+        setWidthHeight,        
+        buildParticleCountBuffers,
         type ParticleWorkerData,
 		type ParticleWorkerResponseData,
 	 	getBackBuffer,
@@ -38,8 +38,8 @@
     let ctxInverseTransform = $derived(ctxTransform?.invertSelf()!);
     let boundingRect = $derived(canvas?.getBoundingClientRect()!);
 
-    let renderingBuffers: [SharedArrayBuffer, SharedArrayBuffer];
-    let renderingBufferViews: [Uint8ClampedArray, Uint8ClampedArray];
+    let particleCountBuffers: [SharedArrayBuffer, SharedArrayBuffer];
+    let particleCountBufferViews: [Uint32Array, Uint32Array];
     let imageData: ImageData;
 
     let cleanUp: () => void = () => {};
@@ -67,15 +67,15 @@
                 lastTime = currentTime;            
 
                 // get the current back buffer to render
-                let backBufferIndex = getBackBuffer(sharedUint8ArrayView);             
-                const frontBuffer = renderingBufferViews[backBufferIndex];
+                let backBufferIndex = getBackBuffer(sharedUint8ArrayView); 
+                const frontCountBuffer = particleCountBufferViews[backBufferIndex];                
 
                 // swap the back buffer index
                 backBufferIndex ^= 1;
                 setBackBuffer(backBufferIndex, sharedUint8ArrayView);
 
                 // clear the new back buffer
-                renderingBufferViews[backBufferIndex].fill(0);                
+                particleCountBufferViews[backBufferIndex].fill(0);
 
                 // notify workers to process the current simulation frame         
                 for(let id = 0; id < maxWorkers; id++) {
@@ -84,15 +84,33 @@
                         particleCount: particleBlockSize,
                         particleOffset: id * particleBlockSize,
                         sharedVariables,
-                        particlesBuffer,
-                        renderingBuffers,
+                        particlesBuffer,                        
+                        particleCountBuffers,
                     };
                     workers[id].postMessage(frameData);
                 }
                 activeWorkers = maxWorkers;                 
 
                 // render the simulation frame                   
-                imageData.data.set(frontBuffer);
+                // imageData.data.set(frontBuffer);
+                for(let countIndex = 0; countIndex < frontCountBuffer.length; countIndex++) {
+                    const rx = (countIndex % width) / width;
+                    const ry = Math.floor(countIndex / width) / height;
+
+                    // red
+                    imageData.data[countIndex * 4] = frontCountBuffer[countIndex] * (25 + 50 * rx);
+
+                    // green
+                    imageData.data[countIndex * 4 + 1] = frontCountBuffer[countIndex] * (25 + 50 * ry);
+
+                    // blue
+                    imageData.data[countIndex * 4 + 2] = frontCountBuffer[countIndex] * (25 + 50 * (1-rx));
+
+                    // alpha
+                    imageData.data[countIndex * 4 + 3] = 255;
+                }
+
+
                 ctx.putImageData(imageData, 0, 0);
             }
             animFrameHandle = requestAnimationFrame(runSimulation);    
@@ -137,8 +155,8 @@
     })
 
     function initWorld(w: number, h: number) {        
-        renderingBuffers = buildRenderingBuffers(w, h);
-        renderingBufferViews = [new Uint8ClampedArray(renderingBuffers[0]), new Uint8ClampedArray(renderingBuffers[1])];
+        particleCountBuffers = buildParticleCountBuffers(w, h);
+        particleCountBufferViews = [new Uint32Array(particleCountBuffers[0]), new Uint32Array(particleCountBuffers[1])];
         imageData = new ImageData(w, h);
         setWidthHeight(w, h, sharedUint16ArrayView);
 

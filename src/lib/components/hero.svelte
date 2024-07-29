@@ -10,8 +10,7 @@
 
     let constellation = $state<Constellation>();
 
-    function scrollIntoView() {
-        console.log('scrollIntoView', skipTarget);
+    function scrollIntoView() {        
         const target = typeof skipTarget === 'string' ? document.querySelector(skipTarget) : skipTarget;
         target?.scrollIntoView({behavior: 'smooth', block: 'start'});
     }

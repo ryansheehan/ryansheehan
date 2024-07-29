@@ -11,8 +11,8 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         particleCount,
         particleOffset,
         sharedVariables,
-        particlesBuffer,
-        renderingBuffers,
+        particlesBuffer,        
+        particleCountBuffers,
     } = data;
 
     if (hasNoSharedViews) {
@@ -27,7 +27,7 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
     const {backBuffer, stride, byteStride, width, height, dt, pointerDown, pointerX, pointerY} = parseSharedVariables(sharedUint8ArrayView, sharedUint16ArrayView, sharedFloat64ArrayView);
     
     const particlesView = new Float32Array(particlesBuffer, particleOffset * byteStride, particleCount * stride);
-    const renderingView = new Uint8Array(renderingBuffers[backBuffer]);
+    const particleCountView = new Uint32Array(particleCountBuffers[backBuffer]);    
 
     let x, xi, y, yi, vx, vxi, vy, vyi, gravDx, gravDy, dist, force: number;
 
@@ -65,34 +65,37 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
         const x = particlesView[i * stride + 0];
         const y = particlesView[i * stride + 1];
         if ((x < 0 || x >= width) || (y < 0 || y >= height)) continue;
-        const index = ((y|0) * width + (x|0)) * 4;         
+        const index = ((y|0) * width + (x|0));         
     
-        const rx = x / width;
-        const ry = y / height;
+        // update particle count at a particular pixel
+        Atomics.add(particleCountView, index, 1);
 
-        // red
-        Atomics.store(
-            renderingView,
-            index,
-            Math.min(255, (Atomics.load(renderingView, index) + 25 + (50 * rx)))
-        );
+        // const rx = x / width;
+        // const ry = y / height;
 
-        // green
-        Atomics.store(
-            renderingView,
-            index + 1,
-            Math.min(255, (Atomics.load(renderingView, index + 1) + 25 + (50 * ry)))
-        );
+        // // red
+        // Atomics.store(
+        //     renderingView,
+        //     index,
+        //     Math.min(255, (Atomics.load(renderingView, index) + 25 + (50 * rx)))
+        // );
 
-        // blue
-        Atomics.store(
-            renderingView,
-            index + 2,
-            Math.min(255, (Atomics.load(renderingView, index + 2) + 25 + (50 * (1-rx))))
-        );
+        // // green
+        // Atomics.store(
+        //     renderingView,
+        //     index + 1,
+        //     Math.min(255, (Atomics.load(renderingView, index + 1) + 25 + (50 * ry)))
+        // );
 
-        // alpha  
-        Atomics.store(renderingView, index + 3, 255);                    
+        // // blue
+        // Atomics.store(
+        //     renderingView,
+        //     index + 2,
+        //     Math.min(255, (Atomics.load(renderingView, index + 2) + 25 + (50 * (1-rx))))
+        // );
+
+        // // alpha  
+        // Atomics.store(renderingView, index + 3, 255);                    
     }    
 
     const responseData: ParticleWorkerResponseData = {id};

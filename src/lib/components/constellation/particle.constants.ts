@@ -59,8 +59,8 @@ export interface ParticleWorkerData {
     particleCount: number;
     particleOffset: number;
     sharedVariables: SharedArrayBuffer;
-    particlesBuffer: SharedArrayBuffer;
-    renderingBuffers: [SharedArrayBuffer, SharedArrayBuffer];
+    particlesBuffer: SharedArrayBuffer;    
+    particleCountBuffers: [SharedArrayBuffer, SharedArrayBuffer];
 }
 
 export interface ParticleWorkerResponseData {
@@ -87,8 +87,11 @@ export function parseSharedVariables(uint8View: Uint8Array, uint16View: Uint16Ar
     }
 }
 
-export function buildRenderingBuffers(w: number, h: number):[SharedArrayBuffer, SharedArrayBuffer]  {
-    return [new SharedArrayBuffer(w * h * renderingStride), new SharedArrayBuffer(w * h * renderingStride)];
+export function buildParticleCountBuffers(w: number, h: number):[SharedArrayBuffer, SharedArrayBuffer] {    
+    return [
+        new SharedArrayBuffer(w * h * 4),
+        new SharedArrayBuffer(w * h * 4),
+    ];     
 }
 
 export function setDeltaTime(dt: DOMHighResTimeStamp, float64View: Float64Array) {    
