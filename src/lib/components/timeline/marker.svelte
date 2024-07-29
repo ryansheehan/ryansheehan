@@ -1,16 +1,52 @@
+<script lang="ts" context="module">
+    export type ActiveCallback = (active: boolean) => void;
+    export type RegistrationFn = (callback: ActiveCallback) => (evt: MouseEvent) => void;
+    export function createActiveContext() {
+        const createId = (function*() {
+            let _id = 1000;
+            while (true) {
+                yield _id++;
+            }
+        })();
+
+        const registrar = new Map<number, ActiveCallback>();
+
+        const register = (callback: ActiveCallback) =>{
+            const _id = createId.next().value;
+            registrar.set(_id, callback);
+            const _onclick = (evt: MouseEvent) => {
+                registrar.forEach((setActive, id) =>{
+                    setActive(_id === id);
+                })
+            }
+            return _onclick;
+        }
+
+        return register;
+    }
+</script>
 <script lang="ts">
-    import type {Snippet} from 'svelte';
+    import {type Snippet, onMount} from 'svelte';
 
     interface Props {           
         active?: boolean;  
         yearStart: string;
         yearEnd: string;         
-        onclick?: (event: MouseEvent) => void;
+        register?: RegistrationFn;
         children?: Snippet<[]>;    
     }
 
-    let {active=false, yearStart, yearEnd, onclick=$bindable(() => {}), children}: Props = $props();
+    let {active=false, yearStart, yearEnd, register, children}: Props = $props();
         
+    let onclick = $state<(evt: MouseEvent) => void>(() => {});
+    const setActive = (value: boolean) => active = value;
+
+    onMount(() => {
+        if (register) {
+            onclick = register(setActive);
+        }
+    });
+    
 </script>
 
 <div class="marker-container">
