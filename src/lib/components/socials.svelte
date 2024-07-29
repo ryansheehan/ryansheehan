@@ -1,10 +1,17 @@
 <script lang="ts">
     import GithubIcon from "$lib/icons/github.svelte";
     import LinkedInIcon from '$lib/icons/linkedin.svelte';
+    import EmailIcon from '$lib/icons/email.svelte';
 </script>
 
 <nav data-link-type="socials" aria-label="social media links">
     <ul>
+        <li>
+            <a href="mailto:rsheehan@gmail.com">
+                <EmailIcon class="social-icon"/>
+                <span class="sr-only">email me</span>
+            </a>
+        </li>
         <li>
             <a href="https://github.com/ryansheehan/">
                 <GithubIcon class="social-icon"/>

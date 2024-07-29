@@ -17,7 +17,7 @@
     <Timeline class="work-timeline">
         <Marker {register} yearStart="2020" yearEnd="current" active>
             <hgroup>
-                <h3 class="current">Software Development Manager</h3>
+                <h3>Software Development Manager</h3>
                 <p><a href="https://www.tylertech.com/">Tyler Technologies</a></p>
             </hgroup>
             <p class="description">Lead a cross-functional team of application developers, user experience designers, systems architects, and infrastructure engineers to deliver Tyler's cloud platform control plane. Direct the development of Tyler's Forge UX design system built with standard web-components. Oversee development and maintenance of over a dozen web applications built on a variety of tech stacks.</p>

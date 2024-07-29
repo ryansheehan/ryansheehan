@@ -1,7 +1,6 @@
 <script lang="ts">
     import "../style.css";
-    import Socials from '$lib/components/socials.svelte';
-    // import {activeRoute} from '../lib/actions/active-route.svelte';
+    import Socials from '$lib/components/socials.svelte';    
 
     let {children} = $props();
 
@@ -12,12 +11,6 @@
 <header class="content-grid">
     <div class="primary-header__layout">
         <a href="/" class="home-link">Ryan Sheehan</a>
-        <!-- <nav class="main-nav" aria-label="site navigation">
-            <ul>
-                <li><a href="/" use:activeRoute>Home</a></li>
-                <li><a href="/about" use:activeRoute>About</a></li>
-            </ul>
-        </nav> -->
         <Socials/>
     </div>
 </header>
@@ -25,8 +18,8 @@
     {@render children()}
     <footer class="content-grid">
         <div class="footer__layout">
-            <p>&copy; {currentYear !== builtYear ? `${builtYear} - ${currentYear}` : `${currentYear}`} Ryan Sheehan <span>All rights reserved.</span></p>
-            <!-- <Socials/> -->
+            <p>Contact: <a class="email-link" href="mailto:rsheehan@gmail.com">rsheehan@gmail.com</a></p>
+            <p>&copy; {currentYear !== builtYear ? `${builtYear} - ${currentYear}` : `${currentYear}`} Ryan Sheehan <span>All rights reserved.</span></p>            
         </div>
     </footer>
 </main>
@@ -64,9 +57,16 @@
     }    
 
     a {
-        text-decoration: none;
-        text-transform: uppercase;        
+        text-decoration: none;        
         color: var(--clr-text);        
+    }
+
+    .email-link {
+        color: var(--clr-primary);
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     /* .main-nav li:hover, .main-nav li:has(.active) {
