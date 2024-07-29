@@ -1,16 +1,22 @@
 <script lang="ts">
     import {type Snippet} from 'svelte'
     import type {HTMLAttributes} from 'svelte/elements';
+    import Line from './line.svelte';
 
     interface Props extends HTMLAttributes<HTMLDivElement> {        
         children: Snippet<[]>;
     }
 
     const {children, class:className, ...divAttr}: Props = $props();
+
+    
 </script>
 
 <div class="timeline-container {className}" {...divAttr}>    
     {@render children()}
+    {#if children.length > 0}
+        <Line/>
+    {/if}
 </div>
 
 <style>

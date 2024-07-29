@@ -53,7 +53,7 @@
         </Marker>
         <Marker {register} yearStart="2010" yearEnd="2013">
             <hgroup>
-                <h3>Software Engineer Consultant</h3>
+                <h3>Software Engineering Consultant</h3>
                 <p><a href="https://www.halliburton.com/">Halliburton</a></p>
             </hgroup>
             <p class="description">Consulted on applying the Unity Game Development engine. Merged enterprise UI techniques to build a 3D real-time down-hole oil well-monitoring application. Designed and built a process tracking application to manage sign-offs and procedures for teams in the field.</p>

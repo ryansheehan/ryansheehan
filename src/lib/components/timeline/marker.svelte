@@ -24,9 +24,11 @@
 
         return register;
     }
+
+    export type MarkerType = 'circle' | 'line';
 </script>
 <script lang="ts">
-    import {type Snippet, onMount} from 'svelte';
+    import {type Snippet, onMount} from 'svelte';    
 
     interface Props {           
         active?: boolean;  
@@ -54,15 +56,13 @@
         <span>{yearStart}</span>
         <span>-</span>
         <span>{yearEnd}</span>
-    </div>
-    <!-- <div class="year">{year}</div> -->
+    </div>    
     <div class="line"></div>
-    <button class="marker" data-active={active} {onclick}></button>
+    <button class="marker-circle" data-active={active} {onclick}></button>   
     <section class="description-container">
         {@render children?.()}
     </section>
 </div>
-
 
 <style>
     .description-container {
@@ -74,10 +74,10 @@
     .marker-container {
         display: grid;
         grid-template-columns: subgrid;
-        position: relative;
+        position: relative;        
     }
 
-    .marker {        
+    .marker-circle {        
         grid-column: marker;
 
         padding: 0;
@@ -91,6 +91,8 @@
         aspect-ratio: 1 / 1;
 
         position: relative;
+
+        cursor: pointer;
     }
 
     .line {
@@ -125,7 +127,7 @@
         }
     }
 
-    .marker[data-active="true"]::before {        
+    .marker-circle[data-active="true"]::before {        
         --ping-offset: calc(var(--border-size) * -1);
 
         content: '';
