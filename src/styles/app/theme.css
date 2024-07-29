@@ -16,7 +16,7 @@
 
 /* @media (prefers-color-scheme: dark) { */
     :root {
-        --clr-background: var(--grayscale-950);
+        --clr-background: var(--grayscale-950);        
         --clr-background-alt: var(--surface-800);
         --clr-text: var(--grayscale-100);
         --clr-primary: var(--primary-300);
@@ -33,10 +33,10 @@
 /* } */
 
 /* dark mode user-agent-styles */
-html {
+/* html { */
     /* color-scheme: dark light;    */
     /* color-scheme: light dark;    */
-}
+/* } */
 
 /* [data-theme="light"] {
     color-scheme: light;

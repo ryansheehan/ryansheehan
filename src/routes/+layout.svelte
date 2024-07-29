@@ -84,8 +84,7 @@
         margin-block-start: var(--spacing-block-2);
         min-height: var(--spacing-block-3);        
         border-top: var(--section-border);
-
-        /* background-color: var(--clr-background-alt); */
+        
         display: grid;
         place-items: center;
 

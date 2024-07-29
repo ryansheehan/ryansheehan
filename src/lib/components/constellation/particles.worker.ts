@@ -38,7 +38,7 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
     // if we assume G=1 and m1=1 then the formula simplifies to
     // F = m2 / r^2
     // assumes gravity = 1 and particle mass = 1
-    const gravityWellMass = 516600; // 600000; //258300 * 2 = 516600
+    const gravityWellMass = 568260; // 516600; // 600000; //258300 * 2 = 516600
     
     // if the gravity well is turned on, then attract everything
     // this is just for fun!

@@ -35,14 +35,7 @@
         position: relative;
         height: 600px;        
         width: 100%;    
-        border-block: var(--section-border);        
-
-        @media (--OSlight) {
-            --clr-background: var(--grayscale-950);
-            --clr-background-alt: var(--surface-800);
-            --clr-text: var(--grayscale-100);
-            --clr-primary: var(--primary-300);
-        }
+        border-block: var(--section-border);
 
         background-color: var(--clr-background);
         color: var(--clr-text);
