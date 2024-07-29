@@ -95,16 +95,17 @@
                 // imageData.data.set(frontBuffer);
                 for(let countIndex = 0; countIndex < frontCountBuffer.length; countIndex++) {
                     const rx = (countIndex % width) / width;
-                    const ry = Math.floor(countIndex / width) / height;
+                    const ry = ((countIndex / width) | 0) / height;
+                    const count = frontCountBuffer[countIndex];
 
                     // red
-                    imageData.data[countIndex * 4] = frontCountBuffer[countIndex] * (25 + 50 * rx);
+                    imageData.data[countIndex * 4] = count * (10 + 40 * rx);
 
                     // green
-                    imageData.data[countIndex * 4 + 1] = frontCountBuffer[countIndex] * (25 + 50 * ry);
+                    imageData.data[countIndex * 4 + 1] = count * (10 + 40 * ry);
 
                     // blue
-                    imageData.data[countIndex * 4 + 2] = frontCountBuffer[countIndex] * (25 + 50 * (1-rx));
+                    imageData.data[countIndex * 4 + 2] = count * (10 + 40 * (1-rx));
 
                     // alpha
                     imageData.data[countIndex * 4 + 3] = 255;
