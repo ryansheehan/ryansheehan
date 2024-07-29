@@ -73,7 +73,8 @@
         border-block-end: var(--size-0) solid var(--clr-text);        
     } */
     
-    .home-link {            
+    .home-link {                    
+        text-transform: uppercase;
         font-size: var(--font-size-3);
         line-height: var(--line-height-3);
         font-weight: var(--font-weight-6);
