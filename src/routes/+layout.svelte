@@ -8,6 +8,13 @@
     const currentYear = new Date().getFullYear();
 </script>
 
+<svelte:head>
+    <title>Ryan Sheehan - Software Engineering Manager | Proven Leader in Tech</title>
+    <meta name="description" content="Ryan Sheehan, MBA - Software Engineer (18+ years) in enterprise cloud development. Experienced leader and manager seeking new director-level opportunities.">
+    <link rel="canonical" href="https://ryan.sheehan.info">
+    <meta name="robots" content="all">
+</svelte:head>
+
 <header class="content-grid">
     <div class="primary-header__layout">
         <a href="/" class="home-link">Ryan Sheehan</a>

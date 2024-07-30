@@ -215,7 +215,9 @@
     bind:this={canvas}     
     ontouchstart={touchStart}
     ontouchend={touchEnd}        
-    onmousedown={mouseDown}    
+    onmousedown={mouseDown}
+    
+    aria-label="Particle simulation with thousands of particles that fall into the touch/mouse position when clicked."
 ></canvas>
 
 <svelte:window onmouseup={mouseUp} />
