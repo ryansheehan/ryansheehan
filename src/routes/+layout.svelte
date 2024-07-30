@@ -1,6 +1,6 @@
 <script lang="ts">
     import "../style.css";
-    import Socials from '$lib/components/socials.svelte';    
+    import Socials from '$lib/components/socials.svelte';      
 
     let {children} = $props();
 
@@ -10,9 +10,21 @@
 
 <svelte:head>
     <title>Ryan Sheehan - Software Engineering Manager | Proven Leader in Tech</title>
-    <meta name="description" content="Ryan Sheehan, MBA - Software Engineer (18+ years) in enterprise cloud development. Experienced leader and manager seeking new director-level opportunities.">
+    <meta name="description" content="Software Engineering Manager (18+ yrs) with MBA seeks Director role. Experienced leader in tech, adept at driving innovation and business growth.">
     <link rel="canonical" href="https://ryan.sheehan.info">
     <meta name="robots" content="all">
+
+    <meta property="og:title" content="Ryan Sheehan - Software Engineering Manager">
+    <meta property="og:description" content="Software Engineering Manager (18+ yrs) with Executive MBA seeks Director role. Experienced in leading teams, delivering software solutions, and strategic business management.">
+    <meta property="og:image" content="https://ryan.sheehan.info/images/ogimage-1200x630.png">
+    <meta property="og:url" content="https://ryan.sheehan.info">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Ryan Sheehan">
+
+    <meta property="og:profile:username" content="sheehanr">  
+    <meta property="og:profile:url" content="https://www.linkedin.com/in/sheehanr/"> 
+    <meta property="og:portfolio:url" content="https://github.com/ryansheehan"> 
+    <meta property="og:article:author" content="Ryan Sheehan">
 </svelte:head>
 
 <header class="content-grid">

@@ -28,7 +28,7 @@
     <span class:hidden={hidden} aria-hidden={hidden} class="phrase">{text}</span>    
 {/snippet}
 
-<h1 class:banner={true} class:glass-effect={true} {...attrs}>    
+<h1 class:banner={true} class:glass-effect={true} {...attrs}>
     <span class="cycler">
         <!-- update words -->
         {#each phrases as phrase, index (index)}

@@ -33,7 +33,7 @@
 <style>
     section {        
         position: relative;
-        height: 600px;        
+        height: 800px;        
         width: 100%;    
         border-block: var(--section-border);
 
