@@ -16,10 +16,13 @@
 
     <meta property="og:title" content="Ryan Sheehan - Software Engineering Manager">
     <meta property="og:description" content="Software Engineering Manager (18+ yrs) with Executive MBA seeks Director role. Experienced in leading teams, delivering software solutions, and strategic business management.">
-    <meta property="og:image" content="https://ryan.sheehan.info/images/ogimage-1200x630.png">
     <meta property="og:url" content="https://ryan.sheehan.info">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Ryan Sheehan">
+
+    <meta property="og:image" content="https://ryan.sheehan.info/images/ogimage-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <meta property="og:profile:username" content="sheehanr">  
     <meta property="og:profile:url" content="https://www.linkedin.com/in/sheehanr/"> 
