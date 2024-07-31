@@ -58,7 +58,7 @@
         <time datetime={yearEnd}>{yearEnd}</time>
     </div>    
     <div class="line"></div>
-    <button class="marker-circle" data-active={active} {onclick}></button>   
+    <button class="marker-circle" {onclick} aria-label="visual marker for years {yearStart} to {yearEnd}"></button>   
     <section class="description-container">
         {@render children?.()}
     </section>
@@ -127,7 +127,7 @@
         }
     }
 
-    .marker-circle[data-active="true"]::before {        
+    :global(.marker-circle[data-active="true"]::before) {        
         --ping-offset: calc(var(--border-size) * -1);
 
         content: '';
