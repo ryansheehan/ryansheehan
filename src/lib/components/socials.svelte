@@ -8,19 +8,19 @@
     <ul>
         <li>
             <a href="mailto:rsheehan@gmail.com">
-                <EmailIcon class="social-icon"/>
+                <EmailIcon class="social-icon email"/>
                 <span class="sr-only">email me</span>
             </a>
         </li>
         <li>
             <a href="https://github.com/ryansheehan/">
-                <GithubIcon class="social-icon"/>
+                <GithubIcon class="social-icon github"/>
                 <span class="sr-only">Github</span>
             </a>
         </li>
         <li>
             <a href="https://www.linkedin.com/in/sheehanr/">
-                <LinkedInIcon class="social-icon"/>
+                <LinkedInIcon class="social-icon linkedin"/>
                 <span class="sr-only">LinkedIn</span>
             </a>
         </li>
@@ -34,7 +34,7 @@
     }
 
     :global(.social-icon:hover) {
-        fill:var(--clr-accent);     
+        fill:var(--clr-primary);     
     }
 
     nav {

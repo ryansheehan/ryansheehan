@@ -33,24 +33,6 @@
             <span class="word" transition:fade={{delay: 500}}>{phrase[1]}</span>
         {/if}
     {/each}    
-
-    <!-- <span class="cycler">        
-        {#each phrases as phrase, index (index)}
-            {#if index === activeIndex}
-                <span class="phrase" transition:fade={{duration: 500}}>
-                    <span class="lede">{phrase[0]}</span>
-                    <span class="word">{phrase[1]}</span>
-                </span>
-            {/if}
-        {/each}
-        
-        {#each phrases as phrase, index (index)}
-            <span class="phrase hidden" aria-hidden="true">
-                <span class="lede">{phrase[0]}</span>
-                <span class="word">{phrase[1]}</span>
-            </span>            
-        {/each}
-    </span> -->
 </h1>
 
 <style>
@@ -68,15 +50,8 @@
         & > * {
             grid-row: 1 / 2;
         }
-    }
 
-    .glass-effect {
-        /* From https://css.glass */
-        background: rgba(255, 255, 255, 0.002);
         border-radius: var(--radius-3);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(2.5px);
-        -webkit-backdrop-filter: blur(2.5px);
         border: var(--border-size-1) solid rgba(255, 255, 255, 0.1);
     }
 
