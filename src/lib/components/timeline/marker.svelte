@@ -53,9 +53,9 @@
 
 <div class="marker-container">
     <div class="year">
-        <span>{yearStart}</span>
+        <time datetime={yearStart}>{yearStart}</time>
         <span>-</span>
-        <span>{yearEnd}</span>
+        <time datetime={yearEnd}>{yearEnd}</time>
     </div>    
     <div class="line"></div>
     <button class="marker-circle" data-active={active} {onclick}></button>   

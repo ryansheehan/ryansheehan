@@ -40,8 +40,8 @@
     {@render children()}
     <footer class="content-grid">
         <div class="footer__layout">
-            <p>Contact: <a class="email-link" href="mailto:rsheehan@gmail.com">rsheehan@gmail.com</a></p>
-            <p>&copy; {currentYear !== builtYear ? `${builtYear} - ${currentYear}` : `${currentYear}`} Ryan Sheehan <span>All rights reserved.</span></p>            
+            <p>Contact: <a class="email-link" href="mailto:rsheehan@gmail.com">rsheehan@gmail.com</a></p>            
+             <p><small>&copy; <time datetime={`${builtYear}`}>{builtYear}</time>{#if currentYear !== builtYear}-<time datetime={`${currentYear}`}>{currentYear}</time>{/if} Ryan Sheehan. All rights reserved.</small></p>
         </div>
     </footer>
 </main>
@@ -54,8 +54,7 @@
     main {                
         --gradient-gray: linear-gradient(in lch, var(--grayscale-950) 15%, color-mix(in lch, var(--grayscale-950) 80%, var(--grayscale-900)), var(--grayscale-900));        
 
-        min-height: 100svh;
-        /* background: var(--gradient-gray);         */
+        min-height: 100svh;        
         position: relative;        
     }
 
@@ -67,8 +66,7 @@
         top: 0;
         background-color: var(--clr-background);
 
-        padding-block: var(--spacing-block-1);
-        /* margin-bottom: var(--spacing-block-1);     */
+        padding-block: var(--spacing-block-1);        
         border-bottom: var(--section-border);
     }
 
@@ -91,10 +89,6 @@
         }
     }
 
-    /* .main-nav li:hover, .main-nav li:has(.active) {
-        border-block-end: var(--size-0) solid var(--clr-text);        
-    } */
-    
     .home-link {                    
         text-transform: uppercase;
         font-size: var(--font-size-3);
