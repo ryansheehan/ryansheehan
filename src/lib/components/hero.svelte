@@ -22,8 +22,8 @@
     <div class="header-text-container isolate no-pointer-events no-select">        
         <ScrollTitle class="cta-title" 
             delay={4000}
-            lede={['building', 'leading', 'crafting']} 
-            words={['software', 'teams', 'experiences']} 
+            lede={ ['building', 'directing', 'evolving']} 
+            words={['software', 'engineers', 'business']} 
         />
         <button class="reset-button has-pointer-events" onclick={() => constellation?.reset()}>Reset</button>
         <button class="skip-button has-pointer-events" onclick={scrollIntoView}>Skip</button>

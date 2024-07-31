@@ -47,7 +47,7 @@ addEventListener('message', ({data}: MessageEvent<ParticleWorkerData>) => {
     // how the the particles slow down when no force is applied
     // the closer this is to 1 the less friction and the more particles
     // will slide without the presence of the gravity well
-    const frictionScalar = 0.8; // 0.75;
+    const frictionScalar = 0.80; // 0.75;
 
     let x, xi, y, yi, vx, vxi, vy, vyi, gravDx, gravDy, dist, force: number;
 
