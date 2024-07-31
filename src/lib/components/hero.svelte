@@ -22,7 +22,7 @@
     <div class="header-text-container isolate no-pointer-events no-select">        
         <ScrollTitle class="cta-title" 
             delay={4000}
-            lede={ ['building', 'directing', 'evolving']} 
+            lede={ ['directing', 'building', 'evolving']} 
             words={['software', 'engineers', 'business']} 
         />
         <button class="reset-button has-pointer-events" onclick={() => constellation?.reset()}>Reset</button>
