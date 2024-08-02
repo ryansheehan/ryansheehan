@@ -1,6 +1,9 @@
 <script lang="ts">
+    import {injectSpeedInsights} from '@vercel/speed-insights';
     import "../style.css";
     import Socials from '$lib/components/socials.svelte';      
+
+    injectSpeedInsights();
 
     let {children} = $props();
 

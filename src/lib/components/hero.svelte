@@ -78,6 +78,12 @@
             height: 250px;
         }
     }
+
+    /* @media(--xl-n-above) {
+        section {
+            height: 1000px;
+        }
+    } */
     
     .no-pointer-events {
         pointer-events: none;
