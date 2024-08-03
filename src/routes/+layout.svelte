@@ -1,9 +1,14 @@
 <script lang="ts">
     import {injectSpeedInsights} from '@vercel/speed-insights';
-    import "../style.css";
+    import { inject } from '@vercel/analytics'
+    import {dev} from '$app/environment';
+
     import Socials from '$lib/components/socials.svelte';      
+    
+    import "../style.css";
 
     injectSpeedInsights();
+    inject({mode: dev ? 'development' : 'production'})
 
     let {children} = $props();
 
