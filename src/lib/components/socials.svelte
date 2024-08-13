@@ -5,7 +5,7 @@
 </script>
 
 <nav data-link-type="socials" aria-label="social media links">
-    <menu>
+    <ul>
         <li>
             <a href="mailto:rsheehan@gmail.com">
                 <EmailIcon class="social-icon email"/>
@@ -24,7 +24,7 @@
                 <span class="sr-only">LinkedIn</span>
             </a>
         </li>
-    </menu>                
+    </ul>                
 </nav>
 
 <style>
@@ -41,7 +41,7 @@
         width: fit-content;
     }
 
-    nav menu {
+    nav ul {
         display: flex;        
         gap: var(--size-2);
 
