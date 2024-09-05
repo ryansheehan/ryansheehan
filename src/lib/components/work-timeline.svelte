@@ -1,6 +1,8 @@
 <script lang="ts">
-    import Marker, {createActiveContext} from './timeline/marker.svelte';
+    import Marker from './timeline/marker.svelte';
+    import {createActiveContext}  from './timeline/marker';
     import Timeline from './timeline/timeline.svelte';
+    
 
     import type {HTMLAttributes} from 'svelte/elements';
 
