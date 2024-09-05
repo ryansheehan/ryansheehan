@@ -44,25 +44,24 @@
         <Socials/>
     </div>
 </header>
-<main>        
-    {@render children()}
-    <footer class="content-grid">
-        <div class="footer__layout">
-            <p>Contact: <a class="email-link" href="mailto:rsheehan@gmail.com">rsheehan@gmail.com</a></p>            
-             <p><small>&copy; <time datetime={`${builtYear}`}>{builtYear}</time>{#if currentYear !== builtYear}-<time datetime={`${currentYear}`}>{currentYear}</time>{/if} Ryan Sheehan. All rights reserved.</small></p>
-        </div>
-    </footer>
-</main>
+<main>{@render children()}</main>
+<footer class="content-grid">
+    <div class="footer__layout">
+        <p>Contact: <a class="email-link" href="mailto:rsheehan@gmail.com">rsheehan@gmail.com</a></p>            
+         <p><small>&copy; <time datetime={`${builtYear}`}>{builtYear}</time>{#if currentYear !== builtYear}-<time datetime={`${currentYear}`}>{currentYear}</time>{/if} Ryan Sheehan. All rights reserved.</small></p>
+    </div>
+</footer>
 
 <style>
     :global(body) {
         --section-border: var(--border-size-1) solid color-mix(in lch, var(--grayscale-900) 30%, rgba(255, 255, 255, 0));
+        display: grid;
+        grid-template-rows: auto 1fr auto;
     }
 
     main {                
         --gradient-gray: linear-gradient(in lch, var(--grayscale-950) 15%, color-mix(in lch, var(--grayscale-950) 80%, var(--grayscale-900)), var(--grayscale-900));        
-
-        min-height: 100svh;        
+         
         position: relative;        
     }
 
